@@ -33,7 +33,7 @@ def contact():
 # topic list route
 @app.route('/topics')
 def topiclist():
-    return render_template('topics.html', page_title='LIST OF TOPICS')
+    return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
 # displays a topic of the user's choice
