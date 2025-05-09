@@ -3,6 +3,7 @@ from flask import render_template, abort
 from flask_sqlalchemy import SQLAlchemy
 import os
 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 db = SQLAlchemy()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, "ergonomics.db")
@@ -40,7 +41,9 @@ def topiclist():
 @app.route('/topic/<int:id>')
 def topic():
     # get the topic, but put 404 instead if id doesn't exist
-    topic = models.Ergonomics.query.filter_by(id=id).first_or_404()
+    topic = models.ergonomics.query.filter_by(id=id).first_or_404()
+    print(topic, topic.name)
+    return render_template('topictype1.html', topic=topic)
 
 
 @app.errorhandler(404)
