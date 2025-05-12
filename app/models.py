@@ -2,10 +2,8 @@ from app.routes import db
 
 
 TopicResources = db.Table('TopicResources',
-                          db.Column('topic_id', db.Integer,
-                                    db.Foreignkey('Topics')),
-                          db.Column('resource_id', db.Integer,
-                                    db.Foreignkey('Resources')))
+        db.Column('topic_id', db.Integer, db.Foreignkey('Topics')),
+        db.Column('resource_id', db.Integer, db.Foreignkey('Resources')))
 
 
 class Topics(db.Model):
