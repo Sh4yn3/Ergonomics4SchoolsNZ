@@ -28,7 +28,7 @@ def about():
 # contact route
 @app.route('/contact')
 def contact():
-    return render_template('about.html', page_title='CONTACT US')
+    return render_template('contact.html', page_title='CONTACT US')
 
 
 # topic list route
@@ -43,7 +43,7 @@ def topic():
     # get the topic, but put 404 instead if id doesn't exist
     topic = models.ergonomics.query.filter_by(id=id).first_or_404()
     print(topic, topic.name)
-    return render_template('topictype1.html', topic=topic)
+    return render_template(topic=topic)
 
 
 @app.errorhandler(404)
