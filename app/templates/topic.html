@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h1>{{ topic.name }}</h1>
+<p>{{ topic.introduction }}</p>
+
+{% for item in articles %}
+  {% include item.include_path %}
+{% endfor %}
+
+{% endblock %}

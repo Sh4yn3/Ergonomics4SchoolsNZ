@@ -37,13 +37,20 @@ def topiclist():
     return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
-# displays a topic of the user's choice
-@app.route('/topic/<int:id>')
-def topic():
-    # get the topic, but put 404 instead if id doesn't exist
-    topic = models.ergonomics.query.filter_by(id=id).first_or_404()
-    print(topic, topic.name)
-    return render_template(topic=topic)
+@app.route('/topic/<int:topic_id>')
+def topic(topic_id):
+    topic = models.Topics.query.filter_by(id=topic_id).first_or_404()
+    articles = models.Articles.query.filter_by(topic_id=topic_id).all()
+
+    valid_articles = []
+    for article in articles:
+        template_type = article.template_type
+        include_path = f"topic templates/article_{template_type}.html"
+        full_path = os.path.join(app.template_folder, include_path)
+        if os.path.isfile(full_path):
+            valid_articles.append({'article': article, 'include_path': include_path})
+
+    return render_template("topic.html", topic=topic, articles=valid_articles)
 
 
 @app.errorhandler(404)
