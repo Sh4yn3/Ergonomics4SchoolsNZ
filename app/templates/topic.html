@@ -4,8 +4,8 @@
 <h1>{{ topic.name }}</h1>
 <p>{{ topic.introduction }}</p>
 
-{% for item in articles %}
-  {% include item.include_path %}
-{% endfor %}
+{% if article and include_path %}
+    {% include include_path %}
+{% endif %}
 
 {% endblock %}

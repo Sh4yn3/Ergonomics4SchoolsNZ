@@ -37,20 +37,16 @@ def topiclist():
     return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
-@app.route('/topic/<int:topic_id>')
-def topic(topic_id):
-    topic = models.Topics.query.filter_by(id=topic_id).first_or_404()
-    articles = models.Articles.query.filter_by(topic_id=topic_id).all()
+@app.route('/topic/<int:id>')
+def topic(id):
+    topic = models.Topics.query.filter_by(id=id).first_or_404()
+    article = models.Articles.query.filter_by(topic_id=topic_id)
 
-    valid_articles = []
-    for article in articles:
-        template_type = article.template_type
-        include_path = f"topic templates/article_{template_type}.html"
-        full_path = os.path.join(app.template_folder, include_path)
-        if os.path.isfile(full_path):
-            valid_articles.append({'article': article, 'include_path': include_path})
+    if article:
+        print(article.title)
+        print(article.template_type)
 
-    return render_template("topic.html", topic=topic, articles=valid_articles)
+    return render_template('topic.html', topic=topic)
 
 
 @app.errorhandler(404)
