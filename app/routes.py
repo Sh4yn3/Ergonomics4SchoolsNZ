@@ -1,4 +1,5 @@
 from app import app
+from flask import request
 from flask import render_template, abort
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -31,6 +32,12 @@ def contact():
     return render_template('contact.html', page_title='CONTACT US')
 
 
+@app.route('/add')
+def add():
+    name = request.args.get('name')
+    return render_template('form.html', title=name)
+
+
 # topic list route
 @app.route('/topics')
 def topiclist():
@@ -38,13 +45,9 @@ def topiclist():
 
 
 @app.route('/topic/<int:id>')
-def topic(id):
+def topic(id, topic_id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
-    article = models.Articles.query.filter_by(topic_id=topic_id)
-
-    if article:
-        print(article.title)
-        print(article.template_type)
+    # article = models.Articles.query.filter_by(topic_id=topic_id)
 
     return render_template('topic.html', topic=topic)
 
