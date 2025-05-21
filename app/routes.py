@@ -35,7 +35,7 @@ def contact():
 @app.route('/add')
 def add():
     name = request.args.get('name')
-    return render_template('form.html', title=name)
+    return render_template('contact.html', title=name)
 
 
 # topic list route
