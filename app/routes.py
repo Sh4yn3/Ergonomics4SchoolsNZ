@@ -44,14 +44,6 @@ def topiclist():
     return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
-@app.route('/topic/<int:id>')
-def topic(id, topic_id):
-    topic = models.Topics.query.filter_by(id=id).first_or_404()
-    # article = models.Articles.query.filter_by(topic_id=topic_id)
-
-    return render_template('topic.html', topic=topic)
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
