@@ -4,5 +4,14 @@
 <h1>{{ topic.name }}</h1>
 <p>{{ topic.introduction }}</p>
 
+{% for article in articles %}
+    {% if article.template_type == 1 %}
+        {% include 'topic templates/article_1.html' %}
+    {% elif article.template_type == 2 %}
+        {% include 'topic templates/article_2.html' %}
+    {% elif article.template_type == 3 %}
+        {% include 'topic templates/article_3.html' %}
+    {% endif %}
+{% endfor %}
 
 {% endblock %}

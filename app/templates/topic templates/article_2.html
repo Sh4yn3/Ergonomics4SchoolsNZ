@@ -1,4 +1,8 @@
-<h1> Type 2 </h1>
+<!-- Article 2 Label : Remove Later -->
+<p style="font-size:14px;text-align:center;color:red;"> [Type 2] </p> 
 
 <h2>{{ article.title }}</h2>
+
+<img src="{{ url_for('static', filename=photo.image) }}" alt="{{ photo.description }}">
+
 <p>{{ article.content }}</p>

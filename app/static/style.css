@@ -27,24 +27,17 @@ h2 {
 }
 
 
-/* Navigation */
-
 .navbar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .navbar li.logo {
-    float: left;
-}
-
-.navbar li.link {
-    float: right;
-    flex-direction: row-reverse;
-    padding: 0px 5px 0px 5px;
+    margin-right: auto;
 }
 
 .navbar a.contact {

@@ -14,7 +14,6 @@ class Topics(db.Model):
     image = db.Column(db.Text())
     introduction = db.Column(db.Text())
     last_updated_on = db.Column(db.Text())
-    created_on = db.Column(db.Text())
 
 
 class Articles(db.Model):
@@ -22,8 +21,10 @@ class Articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topic_id = db.Column(db.Integer, db.ForeignKey('Topics.id'))
     title = db.Column(db.Text())
+    subheading = db.Column(db.Text())
     content = db.Column(db.Text())
     template_type = db.Column(db.Integer())
+    belongs_to = db.Column(db.Text())
 
 
 class Resources(db.Model):
@@ -36,8 +37,8 @@ class Resources(db.Model):
     description = db.Column(db.Text())
 
 
-class Images(db.Model):
-    __tablename__ = "Images"
+class Photos(db.Model):
+    __tablename__ = "Photos"
     id = db.Column(db.Integer, primary_key=True)
     article_id = db.Column(db.Integer, db.ForeignKey('Articles.id'))
     image = db.Column(db.Text())

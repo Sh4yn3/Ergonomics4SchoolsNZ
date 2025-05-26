@@ -44,10 +44,22 @@ def topiclist():
     return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
-@app.route('/pizza/<int:id>')
+@app.route('/topic/<int:id>')
 def topic(id):
-    topic = models.ergonomics.query.filter_by(id=id).first_or_404()
-    return render_template('topic.html', topic=topic)
+    topic = models.Topics.query.filter_by(id=id).first_or_404()
+    articles = models.Articles.query.filter_by(topic_id=id).all()
+    photo = models.Photos.query.get_or_404(id)
+
+    # Convert template_type to int if it's a string
+    for article in articles:
+        if article.template_type and isinstance(article.template_type, str):
+            try:
+                article.template_type = int(article.template_type)
+            except ValueError:
+                article.template_type = 0  # or skip, or set to a default value
+
+    return render_template('topic.html', topic=topic, articles=articles,
+                           photo=photo)
 
 
 @app.errorhandler(404)
