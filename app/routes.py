@@ -44,6 +44,12 @@ def topiclist():
     return render_template('topics_list.html', page_title='LIST OF TOPICS')
 
 
+@app.route('/pizza/<int:id>')
+def topic(id):
+    topic = models.ergonomics.query.filter_by(id=id).first_or_404()
+    return render_template('topic.html', topic=topic)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")

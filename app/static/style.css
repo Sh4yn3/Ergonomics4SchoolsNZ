@@ -12,15 +12,18 @@ body {
 }
 
 h1 {
+  text-align: center;
   font-family: "Chelsea Market", system-ui;
   font-weight: 400;
   font-style: normal;
+  font-size: 28px;
 }
 
 h2 {
   font-family: "Chelsea Market", system-ui;
   font-weight: 400;
   font-style: normal;
+  font-size: 20px;
 }
 
 
@@ -31,6 +34,7 @@ h2 {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    padding: 20px;
 }
 
 .navbar li.logo {
@@ -39,10 +43,11 @@ h2 {
 
 .navbar li.link {
     float: right;
+    flex-direction: row-reverse;
+    padding: 0px 5px 0px 5px;
 }
 
 .navbar a.contact {
-    float: right;
     background-color: aquamarine;
 }
 
