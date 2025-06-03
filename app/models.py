@@ -1,9 +1,9 @@
 from app.routes import db
 
 
-TopicResources = db.Table('TopicResources',
-        db.Column('topic_id', db.Integer, db.ForeignKey('Topics')),
-        db.Column('resource_id', db.Integer, db.ForeignKey('Resources')))
+TopicResources = db.Table("TopicResources",
+        db.Column("topic_id", db.Integer, db.ForeignKey("Topics")),
+        db.Column("resource_id", db.Integer, db.ForeignKey("Resources")))
 
 
 class Topics(db.Model):
@@ -19,7 +19,7 @@ class Topics(db.Model):
 class Articles(db.Model):
     __tablename__ = "Articles"
     id = db.Column(db.Integer, primary_key=True)
-    topic_id = db.Column(db.Integer, db.ForeignKey('Topics.id'))
+    topic_id = db.Column(db.Integer, db.ForeignKey("Topics.id"))
     title = db.Column(db.Text())
     subheading = db.Column(db.Text())
     content = db.Column(db.Text())
@@ -40,7 +40,7 @@ class Resources(db.Model):
 class Photos(db.Model):
     __tablename__ = "Photos"
     id = db.Column(db.Integer, primary_key=True)
-    article_id = db.Column(db.Integer, db.ForeignKey('Articles.id'))
+    article_id = db.Column(db.Integer, db.ForeignKey("Articles.id"))
     image = db.Column(db.Text())
     description = db.Column(db.Text())
     source = db.Column(db.Text())

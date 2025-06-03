@@ -4,6 +4,7 @@
 
 html {
     scroll-behavior: smooth;
+    height: 1500px;
 }
 
 body {
@@ -11,9 +12,11 @@ body {
     font-family: "Oxygen", sans-serif;
     font-weight: 400;
     font-style: normal;
+    margin: 0px;
 }
 
-.text {
+.content {
+    padding-top: 60px;
     margin: 0px 250px 0px 250px;
 }
 
@@ -39,49 +42,87 @@ h2 {
 
 /* Navigation */
 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 0;
+    z-index: 1000;
+    transition: top 0.5s;
+}
+
 .navbar {
-    margin: 0px 250px 0px 250px;
+    width: 100%;
+    max-width: calc(100% - 460px);
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    position: fixed;
-    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-logo {
+    margin-right: auto;
+}
+
+.nav-link {
+    margin-left: 20px;
+}
+
+.nav-logo a {
+    font-size: 18px !important;
 }
 
 .navbar a {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
     text-decoration: none;
 }
 
-.navbar a.contact {
-    background-color: aquamarine;
+.navbar a:hover {
+    mix-blend-mode: difference;
+    color: #ff6200;
 }
 
-.navbar a.search {
-    background-color: rgb(82, 162, 135);
+
+.nav-link a.contact {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 4px 8px; 
+}
+
+.nav-link a.contact:hover {
+    border-color: #ff6200; 
+    color: #ff6200; 
+
 }
 
 /* Home */
-#home-section1 {
+#home-s1 {
     background-color: #062C50;
     padding: 30px 0px 50px 0px;
     color: #F7F7F7;
 }
 
-#home-section1 .welcome {
+#home-s1 .welcome {
     color: #72F1FF;
     font-size: 20px;
 }
 
-#home-section1 .title-card {
+#home-s1 .title-card {
     color: #F7F7F7;
     font-size: 32px;
 }
 
-#home-section1 h2 {
+#home-s1 h2 {
     color: #72F1FF;
 }
