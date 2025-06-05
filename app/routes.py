@@ -32,6 +32,11 @@ def contact():
     return render_template("contact.html", page_title="CONTACT US")
 
 
+# careers advice
+@app.route("/career-advice")
+def careers():
+    return render_template("careers.html", page_title="CAREER ADVICE")
+
 @app.route("/add")
 def add():
     name = request.args.get("name")

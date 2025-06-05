@@ -1,19 +1,22 @@
 <nav>
     <div class="navbar">
         <ul>
-            <li class="nav-logo"> <a href="#Logo"> Ergonomics4SchoolsNZ </a></li>
+            <li class="nav-logo"> <a> Ergonomics4SchoolsNZ </a></li>
             
             <li class="nav-link"> <a href="/"> Home </a></li>
             <li class="nav-link"> <a href="/topics"> Topics List </a></li>
+            <li class="nav-link"> <a href="/career-advice"> Career Advice </a></li>
             <li class="nav-link"> <a href="/about"> About Us </a></li>
             <li class="nav-link"> <a class="contact" href="/contact"> Contact Us </a></li>
-            <li class="nav-link"> <a class="search" href="#Search"> Search </a></li>
+            <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search" clas="search"></i></a></li>
         </ul>
     </div>
 
 </nav>
 
-<script>
+<!-- Removes the nav when scrolled down -->
+<!-- www.w3schools.com -->
+<script> 
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -26,31 +29,30 @@ var currentScrollPos = window.pageYOffset;
 }
 </script>
 
+<!-- Changes font to white if dark bg and black if light bg -->
 <script>
-function updateNavTextColor() {
-  const nav = document.querySelector("nav");
-  const navCenter = window.scrollY + nav.offsetHeight / 2;
-  const sections = document.querySelectorAll("[data-bg]");
+function updateNavTheme() {
+  const sections = document.querySelectorAll('section[data-bg]');
+  const nav = document.querySelector('.navbar');
+  const scrollPos = window.scrollY + window.innerHeight / 3;
 
   for (const section of sections) {
     const rect = section.getBoundingClientRect();
     const top = rect.top + window.scrollY;
     const bottom = top + section.offsetHeight;
 
-    if (navCenter >= top && navCenter <= bottom) {
-      const bg = section.getAttribute("data-bg");
-      const links = nav.querySelectorAll("a");
-      const color = (bg === "dark") ? "white" : "black";
-
-      links.forEach(link => {
-        link.style.color = color;
-      });
+    if (scrollPos >= top && scrollPos < bottom) {
+      const bg = section.getAttribute('data-bg');
+      if (bg === 'dark-bg') {
+        nav.classList.add('nav-white');
+      } else {
+        nav.classList.remove('nav-white');
+      }
       break;
     }
   }
 }
 
-window.addEventListener("scroll", updateNavTextColor);
-window.addEventListener("load", updateNavTextColor);
+window.addEventListener('scroll', updateNavTheme);
+window.addEventListener('load', updateNavTheme);
 </script>
-

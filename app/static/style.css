@@ -74,11 +74,12 @@ nav {
 }
 
 .nav-link {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .nav-logo a {
     font-size: 18px !important;
+    cursor: default;
 }
 
 .navbar a {
@@ -93,6 +94,21 @@ nav {
     color: #ff6200;
 }
 
+.navbar i {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 4px 8px; 
+}
+
+.navbar i:hover {
+    border-color: #ff6200; 
+    color: #ff6200;
+    cursor: pointer;
+}
 
 .nav-link a.contact {
     border: 2px solid #000000;
@@ -104,6 +120,21 @@ nav {
     border-color: #ff6200; 
     color: #ff6200; 
 
+}
+
+/* White text override for dark bg */
+.navbar.nav-white a,
+.navbar.nav-white i,
+.navbar.nav-white .contact {
+  color: white;
+  border-color: white;
+}
+
+.navbar.nav-white a:hover,
+.navbar.nav-white i:hover,
+.navbar.nav-white .contact:hover {
+  color: #ff6200;
+  border-color: #ff6200;
 }
 
 /* Home */
