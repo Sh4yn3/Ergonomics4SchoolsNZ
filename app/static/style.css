@@ -126,8 +126,9 @@ nav {
 .navbar.nav-white a,
 .navbar.nav-white i,
 .navbar.nav-white .contact {
-  color: white;
-  border-color: white;
+  color: #F7F7F7;
+  border-color: #F7F7F7;
+  transition: top 0.3s;
 }
 
 .navbar.nav-white a:hover,
@@ -154,6 +155,36 @@ nav {
     font-size: 32px;
 }
 
+#home-s1 .home-text {
+    padding: 10px 50px 0px 50px;
+}
+
 #home-s1 h2 {
     color: #72F1FF;
+}
+
+#home-s1 img {
+    float: right;
+    width: 300px;
+    height: 300px;
+    padding-left: 15px;
+    margin: left;
+}
+
+#home-s2 .column {
+    float: left;
+    width: 30%;
+    padding: 15px;
+}
+
+.white-button {
+    color: #F7F7F7;
+    border-color: #F7F7F7;
+    transition: top 0.3s;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
 }
