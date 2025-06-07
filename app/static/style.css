@@ -178,8 +178,8 @@ nav {
 }
 
 .white-button {
-    color: #F7F7F7;
-    border-color: #F7F7F7;
+    border: 2px solid #F7F7F7;
+    border-radius: 5px;
     transition: top 0.3s;
 }
 
