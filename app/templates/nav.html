@@ -1,40 +1,37 @@
 <nav>
-    <div class="navbar">
-        <ul>
-            <li class="nav-logo"> <a> Ergonomics4SchoolsNZ </a></li>
-            
-            <li class="nav-link"> <a href="/"> Home </a></li>
-            <li class="nav-link"> <a href="/topics"> Topics List </a></li>
-            <li class="nav-link"> <a href="/career-advice"> Career Advice </a></li>
-            <li class="nav-link"> <a href="/about"> About Us </a></li>
-            <li class="nav-link"> <a class="contact" href="/contact"> Contact Us </a></li>
-            <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search" clas="search"></i></a></li>
-        </ul>
-    </div>
-
+  <div class="navbar">
+    <ul>
+      <li class="nav-logo"> <a> Ergonomics4SchoolsNZ </a></li>
+        <li class="nav-link"> <a href="/"> Home </a></li>
+        <li class="nav-link"> <a href="/topics"> Topics List </a></li>
+        <li class="nav-link"> <a href="/career-advice"> Career Advice </a></li>
+        <li class="nav-link"> <a href="/about"> About Us </a></li>
+        <li class="nav-link"> <a class="contact" href="/contact"> Contact Us </a></li>
+        <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search" clas="search"></i></a></li>
+      </ul>
+  </div>
 </nav>
+<button class="nav-toggle" >
+  <img src="/static/icon/collapse.svg" oncontextmenu="return false;" draggable="false">
+</button>
 
-<!-- Removes the nav when scrolled down -->
-<!-- www.w3schools.com -->
-<script> 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.querySelector("nav").style.top = "0px";
-  } else {
-    document.querySelector("nav").style.top = "-500px";
-  }
-  prevScrollpos = currentScrollPos;
-}
+<!-- Collapsable Navbar -->
+<script>
+  const collapse = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("nav");
+
+  collapse.addEventListener("click", () => {
+    nav.classList.toggle("hidden");
+    collapse.classList.toggle("hidden");
+  });
 </script>
 
-<!-- Changes font to white if dark bg and black if light bg -->
+<!-- Updates Font Colour Depending on Light (Black) or Dark BG (White) -->
 <script>
 function updateNavTheme() {
-  const sections = document.querySelectorAll('section[data-bg]');
-  const nav = document.querySelector('.navbar');
-  const scrollPos = window.scrollY + window.innerHeight / 3;
+  const sections = document.querySelectorAll("section[data-bg]");
+  const nav = document.querySelector("nav");
+  const scrollPos = window.scrollY;
 
   for (const section of sections) {
     const rect = section.getBoundingClientRect();
@@ -42,17 +39,17 @@ function updateNavTheme() {
     const bottom = top + section.offsetHeight;
 
     if (scrollPos >= top && scrollPos < bottom) {
-      const bg = section.getAttribute('data-bg');
-      if (bg === 'dark-bg') {
-        nav.classList.add('nav-white');
+      const bg = section.getAttribute("data-bg");
+      if (bg === "dark-bg") {
+        nav.classList.add("nav-white");
       } else {
-        nav.classList.remove('nav-white');
+        nav.classList.remove("nav-white");
       }
       break;
     }
   }
 }
 
-window.addEventListener('scroll', updateNavTheme);
-window.addEventListener('load', updateNavTheme);
+window.addEventListener("scroll", updateNavTheme);
+window.addEventListener("load", updateNavTheme);
 </script>
