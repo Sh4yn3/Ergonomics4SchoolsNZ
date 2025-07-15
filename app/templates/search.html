@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+<h1>Search Results for "{{ query }}"</h1>
+
+{% if topics %}
+<ul>
+  {% for topic in topics %}
+    <li><a href="{{ url_for('topic', id=topic.id) }}">{{ topic.name }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No topics found.</p>
+{% endif %}
+
+{% endblock %}

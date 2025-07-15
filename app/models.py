@@ -16,8 +16,10 @@ class Topics(db.Model):
     slug = db.Column(db.Text())
     image = db.Column(db.Text())
     introduction = db.Column(db.Text())
+    created_on = db.Column(db.Text())
     last_updated_on = db.Column(db.Text())
-
+    keywords = db.Column(db.Text())
+    summary = db.Column(db.Text())
 
 class Articles(db.Model):
     __tablename__ = "Articles"

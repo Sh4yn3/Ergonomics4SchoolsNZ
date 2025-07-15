@@ -32,16 +32,17 @@ def contact():
     return render_template("contact.html", page_title="CONTACT US")
 
 
-# careers advice
-@app.route("/career-advice")
-def careers():
-    return render_template("careers.html", page_title="CAREER ADVICE")
-
-
+# for contact
 @app.route("/add")
 def add():
     name = request.args.get("name")
     return render_template("contact.html", title=name)
+
+
+# careers advice
+@app.route("/career-advice")
+def careers():
+    return render_template("careers.html", page_title="CAREER ADVICE")
 
 
 # topic list route
@@ -70,6 +71,19 @@ def topic(id):
 
     return render_template("topic.html", topic=topic, articles=articles,
                            photo=photo, resource=resource)
+
+
+@app.route("/search")
+def search():
+    query = request.args.get("q", "").strip()
+
+    if not query:
+        return render_template("search.html", query=query, topics=[])
+
+    # Search topics by name (case-insensitive, partial match)
+    results = models.Topics.query.filter(models.Topics.name.ilike(f"%{query}%")).all()
+
+    return render_template("search.html", query=query, topics=results)
 
 
 @app.errorhandler(404)

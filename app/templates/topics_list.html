@@ -18,8 +18,8 @@
       <a href="/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name }} </a>
     </div>
     <div class="tpl-summary">
-      <p>{{ topic.introduction or "Blah Blah Blah Collapsible Summary !@#$%^!!" }}</p>
-      <p>Keywords: ######</p>
+      <p>{{ topic.summary or "Blah Blah Blah Collapsible Summary !@#$%^!!" }}</p>
+      <p>Keywords: {{ topic.keywords }} </p>
     </div>
   </div>
   {% endfor %}
@@ -29,6 +29,7 @@
 
 </section>
 
+<!-- Collapse & Uncollapse Summary -->
 <script>
 var toggles = document.getElementsByClassName("tpl-toggle");
 

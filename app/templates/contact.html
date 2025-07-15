@@ -7,9 +7,96 @@
     </div>
 </section>
 
-<form action="/add" method="post">
-    <input type="text" name="name"> <br>
-    <input type="submit">
-</form>
+<section id="contact-s2">
+<div class="content">
+{% if submitted %}
+<p> Thank You, your message has been received! </p>
+{% endif %}
+
+<form action="/add" method="POST">
+    <label>Name
+      <input type="text" name="name">
+    </label>
+
+    <label>Email address <span class="required">*</span>
+      <input type="email" name="email" required>
+      <div class="note">* we cannot answer your question without an email address or if it's incorrect, so please check it carefully.</div>
+    </label>
+
+    <label>Are you a student, teacher, or other?</label>
+    <div class="contact-radio">
+    <label>
+        <input type="radio" name="role" value="student" onclick="updateVisibility()"> Student
+    </label>
+
+    <label>
+        <input type="radio" name="role" value="teacher" onclick="updateVisibility()"> Teacher
+    </label>
+
+    <label class="other-option">
+        <input type="radio" name="role" value="other" onclick="updateVisibility()"> Other /
+        <input type="text" name="other_role" id="otherInput" class="inline-input hide" placeholder="Please specify">
+    </label>
+    </div>
+
+    <div id="schoolInfo" class="hide">
+      <label>School
+        <input type="text" name="school">
+      </label>
+
+      <label>School address
+        <textarea name="school_address" rows="4"></textarea>
+        <div class="note">(please include the country as this may help us to answer your question more appropriately)</div>
+      </label>
+    </div>
+
+    <div id="studentInfo" class="hide">
+      <label>How old are you?
+        <input type="text" name="age">
+        <div class="note">(if you're a student!)</div>
+      </label>
+
+      <label>What subjects are you studying?
+        <input type="text" name="subjects">
+      </label>
+    </div>
+
+    <label>Question
+      <textarea name="question" rows="10"></textarea>
+      <div class="note">(please make your question as specific as possible. We can't answer a question that starts with "tell me all you know about...!")</div>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+</section>
+
+<script>
+  function updateVisibility() {
+    const selected = document.querySelector('input[name="role"]:checked')?.value;
+    const schoolInfo = document.getElementById('schoolInfo');
+    const studentInfo = document.getElementById('studentInfo');
+    const otherInput = document.getElementById('otherInput');
+
+    if (selected === 'student') {
+      schoolInfo.classList.remove('hide');
+      studentInfo.classList.remove('hide');
+      otherInput.classList.add('hide');
+    } else if (selected === 'teacher') {
+      schoolInfo.classList.remove('hide');
+      studentInfo.classList.add('hide');
+      otherInput.classList.add('hide');
+    } else if (selected === 'other') {
+      schoolInfo.classList.add('hide');
+      studentInfo.classList.add('hide');
+      otherInput.classList.remove('hide');
+      otherInput.focus();
+    } else {
+      schoolInfo.classList.add('hide');
+      studentInfo.classList.add('hide');
+      otherInput.classList.add('hide');
+    }
+  }
+</script>
 
 {% endblock %}

@@ -5,15 +5,22 @@
     background-image: url("/static/bg/Paper_Light_Blue.png");
 }
 
-#topic-intro .polaroid-image {
-    border: 1px solid darkgrey;
-    background-color: white;
-    padding: 15px 15px 60px 15px;
-    box-shadow: 5px 10px 10px darkgrey;;
+.polaroid-wrapper {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  margin: 2em 0;
 }
 
-#topic-intro img {
-    display: block;
-    margin: auto;
-    width: 50%;
+.polaroid-frame {
+  background: white;
+  padding: 12px 12px 30px 12px; /* thicker bottom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ccc;
+  width: fit-content;
+}
+
+.polaroid-frame img {
+  display: block;
+  max-width: 100%;
+  height: 250px;
 }
