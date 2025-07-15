@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<section id="tplist-intro"> 
-    <div> 
+<section id="tp-intro">  
     <div class="content">
         <h1> Welcome to the Learning Zone! </h1>
         <p> Topics in the Learning Zone contains descriptions, design guidelines, and tips on what to do.
@@ -11,12 +10,40 @@
     </div>
 </section>
 
-<section id="tplist-topics">
+<section id="tp-list" class="content">
+  {% for topic in topics %}
+  <div class="tpl-box">
+    <div class="tpl-header">
+      <button type="button" class="tpl-toggle"> &gt; </button>
+      <a href="/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name }} </a>
+    </div>
+    <div class="tpl-summary">
+      <p>{{ topic.introduction or "Blah Blah Blah Collapsible Summary !@#$%^!!" }}</p>
+      <p>Keywords: ######</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<section id="tp-research">
 
 </section>
 
-<section id="tplist-research">
+<script>
+var toggles = document.getElementsByClassName("tpl-toggle");
 
-</section>
+for (var i = 0; i < toggles.length; i++) {
+  toggles[i].addEventListener("click", function () {
+    var summary = this.parentElement.nextElementSibling;
+    if (summary.style.display === "block") {
+      summary.style.display = "none";
+      this.textContent = " > ";
+    } else {
+      summary.style.display = "block";
+      this.textContent = " v ";
+    }
+  });
+}
+</script>
 
 {% endblock %}

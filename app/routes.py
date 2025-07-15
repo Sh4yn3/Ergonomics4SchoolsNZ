@@ -47,10 +47,9 @@ def add():
 # topic list route
 @app.route("/topics")
 def topiclist():
-    topic = models.Topics.query.all
-
+    topics = models.Topics.query.all()
     return render_template("topics_list.html", page_title="LIST OF TOPICS",
-                           topic=topic)
+                           topics=topics)
 
 
 # topics route

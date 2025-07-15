@@ -2,7 +2,7 @@
 
 html {
     scroll-behavior: smooth;
-    height: 1500px;
+    height: 1000px;
 }
 
 body {
@@ -14,7 +14,12 @@ body {
 }
 
 .content {
-    margin: 0px 250px 0px 250px;
+    margin: 0px 200px 0px 200px;
+}
+
+p {
+    margin: 0px;
+    padding-bottom: 10px;
 }
 
 h1 {
@@ -109,9 +114,9 @@ nav {
 
 .navbar {
     width: 100%;
-    max-width: calc(100% - 460px);
+    max-width: calc(100% - 300px);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
     box-sizing: border-box;
 }
 
@@ -203,7 +208,7 @@ nav.hidden {
     top: -58px;
 }
 
-/* Home */
+/* Page: Home */
 
 #home-1 {
     background-image: linear-gradient( #0000001a 2%, #0000000e 5%, #00000000 70%), url("/static/bg/Paper_Tiled_Blue.png");
@@ -259,7 +264,6 @@ nav.hidden {
     text-align: center;
     color: #333;
     font-weight: bold;
-    margin-bottom: 40px;
 }
 
 #home-2 .card-row-container {
@@ -290,12 +294,78 @@ nav.hidden {
 }
 
 
-/* Topic List */
+/* Page: 404 ERROR */
+#error img {
+    display: block;
+    margin: auto;
+    width: 20%;
+}
 
-#tplist-intro {
+#error body {
+    overflow: hidden;
+}
+
+#error {
+    text-align: center;
+}
+
+#error h1 {
+    margin-top: 100px;
+}
+
+/* Page: Topic List */
+
+#tp-intro {
     padding: 20px 0px;
 }
 
+#tp-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.tpl-box {
+  flex: 0 0 calc(33.333% - 10.66px);
+  box-sizing: border-box;
+  background-color: #e0e0e0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tpl-header {
+  display: flex;
+  align-items: center;
+}
+
+.tpl-toggle {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 12px 16px;
+  border: none;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.tpl-name {
+  background-color: #a0a0a0;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 12px 10px;
+  flex-grow: 1;
+}
+
+.tpl-summary {
+  display: none;
+  background-color: #acc0d0;
+  padding: 10px;
+}
 
 /* ======== MOBILE VERSION ======== */
 
@@ -396,3 +466,6 @@ nav.hidden {
         font-size: 24px;
     }
 }
+
+
+/* TESTING */
