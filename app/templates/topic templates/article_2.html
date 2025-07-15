@@ -3,6 +3,6 @@
 
 <h2>{{ article.title }}</h2>
 
-<img src="{{ url_for('static', filename=photo.image) }}" alt="{{ photo.description }}">
+<img src="{{ photo.image }}" alt="{{ photo.description }}">
 
 <p>{{ article.content }}</p>

@@ -6,8 +6,7 @@ html {
 }
 
 body {
-    background-image: url("/static/bg/Paper_Tiled_White.png");
-    background-color: #F7F7F7;
+    background-color: #f3f3f1;
     font-family: "Oxygen", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -48,24 +47,64 @@ a.link:hover {
     color: #35abb8;
 }
 
-#borderimg {
-    border: 10px solid transparent;
-    padding: 15px;
-    border-image: url("/static/bg/Isolated_Torn_Paper1.png") 30 round;
+.rip-border {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: -35px; 
+    pointer-events: none;
+    user-select: none;
 }
 
-/* Default Navigation */
+/* Buttons and Borders */
+
+.border {
+    background: url("/static/bg/Paper_Tiled_Navy.png") repeat;
+    padding: 0.2px;
+    text-align: center;
+    color: #f7f7f7;
+    box-shadow: 2px 2px 2px #051320;
+}
+
+.white-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #F7F7F7;
+  color: #F7F7F7;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.blue-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #377A99;
+  color: #377A99;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Default Navigation Bar */
 
 nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 0;
+    padding: 15px 0;
     z-index: 1000;
     position: fixed;
     transition: top 0.5s ease;
-    background-color: #F7F7F7;
-    box-shadow: 1px 2px 4px #768693;
+    background-image: linear-gradient(#00000023), url("/static/bg/Paper_Tiled_Blue.png");
+    background-repeat: unset;
+    box-shadow: 2px 2px 2px #051320;
 }
 
 .navbar {
@@ -124,18 +163,18 @@ nav {
 }
 
 .navbar a {
-    color: #000000;
-    font-size: 18px;
+    color: #F7F7F7;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: none;
 }
 
 .navbar i {
-    color: #000000;
+    color: #F7F7F7;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid #000000;
+    border: 2px solid #F7F7F7;
     border-radius: 5px;
     padding: 4px 8px; 
 }
@@ -143,13 +182,13 @@ nav {
 .navbar .nav-link a:hover,
 .navbar i:hover,
 .nav-link a.contact:hover {
-    border-color: #0080ff; 
-    color: #0080ff; 
-    cursor: pointer;
+    color: #67e4f2;
+    border-color: #67e4f2;
+    transition: top 0.3s;
 }
 
 .nav-link a.contact {
-    border: 2px solid #000000;
+    border: 2px solid #F7F7F7;
     border-radius: 5px;
     padding: 4px 8px; 
 }
@@ -157,46 +196,24 @@ nav {
 /* Navigation Toggles */
 
 nav.hidden {
-    top: -80px;
+    top: -100px;
 }
 
 .nav-toggle.hidden {
     top: -58px;
 }
 
-/* White text override for dark bg */
-
-nav.nav-white {
-    background-color: #062C50;
-    box-shadow: 1px 2px 4px #051320;
-
-}
-
-nav.nav-white a,
-nav.nav-white i,
-nav.nav-white .contact {
-    color: #F7F7F7;
-    border-color: #F7F7F7;
-    transition: top 0.3s;
-}
-
-nav.nav-white .nav-link a:hover,
-nav.nav-white i:hover,
-nav.nav-white .contact:hover {
-    color: #67e4f2;
-    border-color: #67e4f2;
-}
-
 /* Home */
 
 #home-1 {
-    background-image: url("/static/bg/Paper_Tiled_Blue.png");
-    background-repeat: unset;
+    background-image: linear-gradient( #0000001a 2%, #0000000e 5%, #00000000 70%), url("/static/bg/Paper_Tiled_Blue.png");
+    background-repeat: repeat;
     color: #e6e4e0;
-    padding: 120px 0px 250px 0px;
+    padding: 60px 0px 210px 0px;
 }
 
 #home-1 .home-container { 
+    padding: 10px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -238,6 +255,7 @@ nav.nav-white .contact:hover {
 }
 
 #home-2 .title-card {
+    padding: 30px 0px;
     text-align: center;
     color: #333;
     font-weight: bold;
@@ -245,6 +263,7 @@ nav.nav-white .contact:hover {
 }
 
 #home-2 .card-row-container {
+    padding: 50px 0px;
     display: flex;
     justify-content: space-around;
     gap: 5px;
@@ -271,19 +290,10 @@ nav.nav-white .contact:hover {
 }
 
 
-/* Buttons! */
+/* Topic List */
 
-.white-button {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #F7F7F7;
-  color: #F7F7F7;
-  text-decoration: none;
-  border-radius: 5px;
-  font-family: sans-serif;
-  position: relative;
-  transition: all 0.3s ease;
-  overflow: hidden;
+#tplist-intro {
+    padding: 20px 0px;
 }
 
 
@@ -298,7 +308,6 @@ nav.nav-white .contact:hover {
         left: 0;
         width: 275px;
         height: 100vh;
-        background-color: #F7F7F7;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         transition: left 0.3s ease;
         padding-top: 100px;
@@ -313,12 +322,12 @@ nav.nav-white .contact:hover {
 
     .navbar ul {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
         align-items: flex-start;
+        flex-direction: column;
+        list-style: none;
+        gap: 20px;
         padding: 0 20px;
         margin: 0;
-        list-style: none;
     }
 
     .navbar li {
@@ -328,15 +337,19 @@ nav.nav-white .contact:hover {
     .navbar a {
         display: block;
         padding: 10px 0;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
-        color: #000;
+        color: #f7f7f7;
         text-decoration: none;
+    }
+
+    .sidebar-open {
+        background-color: #0000005d;
     }
 
     /* Sidebar: Toggle */
     .nav-toggle {
-    display: block;
+        display: block;
         position: fixed;
         top: 5px;
         right: 90px;
@@ -345,24 +358,32 @@ nav.nav-white .contact:hover {
         border: none;
         padding: 0;
         transform: rotate(-0.25turn);
+        transition: 0.3s ease;
         cursor: pointer;
     }
 
     .nav-toggle img {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
         display: block;
         transition: 0.3s ease;
     }
 
     /* Sidebar: Hidden */
 
-    nav.hidden {
+    nav.hidden,
+    .navbar a.hidden {
         left: -290px;
     }
 
     .nav-toggle.hidden {
-        right: 10px;
+        transition: 0.3s ease;
+        right: 325px;
+        top: 5px;
+    }
+
+    .sidebar-open.hidden {
+        background-color: #ffffff00;
     }
 
     /* Everything Else */

@@ -1,0 +1,19 @@
+/* == TOPIC : INTRODUCTION == */
+
+#topic-intro {
+    padding: 100px 0px 100px 0px;
+    background-image: url("/static/bg/Paper_Light_Blue.png");
+}
+
+#topic-intro .polaroid-image {
+    border: 1px solid darkgrey;
+    background-color: white;
+    padding: 15px 15px 60px 15px;
+    box-shadow: 5px 10px 10px darkgrey;;
+}
+
+#topic-intro img {
+    display: block;
+    margin: auto;
+    width: 50%;
+}

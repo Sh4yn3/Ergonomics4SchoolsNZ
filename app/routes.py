@@ -37,6 +37,7 @@ def contact():
 def careers():
     return render_template("careers.html", page_title="CAREER ADVICE")
 
+
 @app.route("/add")
 def add():
     name = request.args.get("name")
@@ -46,7 +47,10 @@ def add():
 # topic list route
 @app.route("/topics")
 def topiclist():
-    return render_template("topics_list.html", page_title="LIST OF TOPICS")
+    topic = models.Topics.query.all
+
+    return render_template("topics_list.html", page_title="LIST OF TOPICS",
+                           topic=topic)
 
 
 # topics route
@@ -55,6 +59,7 @@ def topic(id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
     articles = models.Articles.query.filter_by(topic_id=id).all()
     photo = models.Photos.query.get_or_404(id)
+    resource = models.Resources.query.filter_by(id=id).all()
 
     # Convert template_type to int if it"s a string
     for article in articles:
@@ -65,7 +70,7 @@ def topic(id):
                 article.template_type = 0  # or skip, or set to a default value
 
     return render_template("topic.html", topic=topic, articles=articles,
-                           photo=photo)
+                           photo=photo, resource=resource)
 
 
 @app.errorhandler(404)

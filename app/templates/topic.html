@@ -5,12 +5,22 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 
-
-<section id="topic">
+<section id="topic-intro">
     <div class="content">
         <h1>{{ topic.name }}</h1>
+        <div class ="polaroid-frame">
+            <div class="polaroid-image">
+                <img src="/static/image/placeholder.jpg">
+            </div>
+        </div>
         <p>{{ topic.introduction }}</p>
+    </div>
+</section>
 
+<img class="rip-border" src="/static/bg/Isolated_Torn_Paper1.png" alt="Ripped Paper Border" oncontextmenu="return false;" draggable="false"/>
+
+<section id="topic-info">
+    <div class="content">
     {% for article in articles %}
         {% if article.template_type == 1 %}
             {% include "topic templates/article_1.html" %}
@@ -20,6 +30,16 @@
             {% include "topic templates/article_3.html" %}
         {% endif %}
     {% endfor %}
+    </div>
+</section>
+
+<section id="topic-resources">
+    <div class="content"> 
+        <h2> {{ resource.name }} </h2>
+        <img src="{{ resource.image }}">
+        <p> Type: {{ resource.type }} </p>
+        <p> {{ resource.description }} </p>
+        <p> {{ resource.url }} </p>
     </div>
 </section>
 
