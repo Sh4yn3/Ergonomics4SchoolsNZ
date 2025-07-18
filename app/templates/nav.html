@@ -8,7 +8,19 @@
         <li class="nav-link"> <a href="/career-advice"> Career Advice </a></li>
         <li class="nav-link"> <a href="/about"> About Us </a></li>
         <li class="nav-link"> <a class="contact" href="/contact"> Contact Us </a></li>
-        <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search" clas="search"></i></a></li>
+        <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search"></i></a></li>
+        <li class="nav-link"> <a class="bg-mode" onclick="themeswitch()"><i class="fi fi-br-moon"></i></a></li>
+
+        <li class="nav-link search-bar search-hidden">
+          <form action="/search" method="get">
+            <input type="text" name="q" placeholder="Search..." class="search-input">
+          </form>
+        </li>
+
+        <li class="nav-link exit-search search-hidden">
+          <a class="exit"> <i class="fi fi-br-cross"></i>
+          </a>
+        </li>
       </ul>
   </div>
 </nav>
@@ -26,4 +38,86 @@
     nav.classList.toggle("hidden");
     collapse.classList.toggle("hidden");
   });
+</script>
+<!-- based on www.w3schools.com -->
+
+
+<!-- Light/Dark Toggler -->
+<script>
+    function themeswitch() {
+        const bodyElement = document.body;
+        const themeIcon = document.querySelector('.bg-mode i'); // Select the icon element
+
+        // Toggle the 'light-mode' class
+        bodyElement.classList.toggle("light-mode");
+
+        // Update icon and localStorage based on current theme
+        if (bodyElement.classList.contains("light-mode")) {
+            // If light mode is active, set sun icon and save 'light'
+            if (themeIcon) {
+                themeIcon.classList.remove("fi-br-moon");
+                themeIcon.classList.add("fi-br-sun");
+            }
+            localStorage.setItem('theme', 'light');
+        } else {
+            // If dark mode is active, set moon icon and save 'dark'
+            if (themeIcon) {
+                themeIcon.classList.remove("fi-br-sun");
+                themeIcon.classList.add("fi-br-moon");
+            }
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // Applies the stored theme from localStorage when the DOM is fully loaded.
+    // Sets the body class and the correct theme icon.
+    document.addEventListener('DOMContentLoaded', () => {
+        const storedTheme = localStorage.getItem('theme');
+        const bodyElement = document.body;
+        const themeIcon = document.querySelector('.bg-mode i');
+
+        // Apply stored theme if found
+        if (storedTheme === 'light') {
+            bodyElement.classList.add('light-mode');
+            // Ensure icon is set correctly on load for light mode
+            if (themeIcon) {
+                themeIcon.classList.remove("fi-br-moon");
+                themeIcon.classList.add("fi-br-sun");
+            }
+        } else {
+            // Default to dark mode if no preference or 'dark' is stored
+            bodyElement.classList.remove('light-mode'); // Ensure dark mode is active
+            if (themeIcon) {
+                themeIcon.classList.remove("fi-br-sun");
+                themeIcon.classList.add("fi-br-moon");
+            }
+        }
+    });
+</script>
+
+<!-- Search Change -->
+<script>
+  const searchBtn = document.querySelector('.search');
+  const exitBtn = document.querySelector('.exit');
+  const navList = document.querySelector('.navbar ul');
+  const searchBar = document.querySelector('.search-bar');
+  const exitSearch = document.querySelector('.exit-search');
+
+  function toggleSearchBar() {
+    navList.classList.toggle('search-mode');
+    searchBar.classList.toggle('search-hidden');
+    exitSearch.classList.toggle('search-hidden');
+  }
+
+  if (searchBtn && exitBtn) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      toggleSearchBar();
+    });
+
+    exitBtn.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      toggleSearchBar();
+    });
+  }
 </script>

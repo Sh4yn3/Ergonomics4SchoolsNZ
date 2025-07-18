@@ -1,19 +1,18 @@
 /* == TOPIC : INTRODUCTION == */
 
 #topic-intro {
-    padding: 100px 0px 100px 0px;
-    background-image: url("/static/bg/Paper_Light_Blue.png");
+  padding: 100px 0px 100px 0px;
+  background-image: url("/static/bg/Paper_Light_Blue.png");
 }
 
 .polaroid-wrapper {
-  display: flex;
-  justify-content: center; /* horizontal centering */
-  margin: 2em 0;
+  justify-content: center; 
+  margin: 10px 0px;
 }
 
 .polaroid-frame {
   background: white;
-  padding: 12px 12px 30px 12px; /* thicker bottom */
+  padding: 12px 12px 30px 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   border: 1px solid #ccc;
   width: fit-content;

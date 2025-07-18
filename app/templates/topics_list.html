@@ -18,7 +18,7 @@
       <a href="/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name }} </a>
     </div>
     <div class="tpl-summary">
-      <p>{{ topic.summary or "Blah Blah Blah Collapsible Summary !@#$%^!!" }}</p>
+      <p>{{ topic.summary or "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et sagittis sem, vitae pulvinar felis. Sed tincidunt pretium purus at tincidunt." }}</p>
       <p>Keywords: {{ topic.keywords }} </p>
     </div>
   </div>
@@ -31,20 +31,21 @@
 
 <!-- Collapse & Uncollapse Summary -->
 <script>
-var toggles = document.getElementsByClassName("tpl-toggle");
+  var toggles = document.getElementsByClassName("tpl-toggle");
 
-for (var i = 0; i < toggles.length; i++) {
-  toggles[i].addEventListener("click", function () {
-    var summary = this.parentElement.nextElementSibling;
-    if (summary.style.display === "block") {
-      summary.style.display = "none";
-      this.textContent = " > ";
-    } else {
-      summary.style.display = "block";
-      this.textContent = " v ";
-    }
-  });
-}
+  for (var i = 0; i < toggles.length; i++) {
+    toggles[i].addEventListener("click", function () {
+      var summary = this.parentElement.nextElementSibling;
+      if (summary.classList.contains("active")) {
+        summary.classList.remove("active");
+        this.textContent = " > ";
+      } else {
+        summary.classList.add("active");
+        this.textContent = " v ";
+      }
+    });
+  }
 </script>
+
 
 {% endblock %}
