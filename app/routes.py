@@ -80,7 +80,6 @@ def search():
     if not query:
         return render_template("search.html", query=query, topics=[])
 
-    # Search topics by name (case-insensitive, partial match)
     results = models.Topics.query.filter(models.Topics.name.ilike(f"%{query}%")).all()
 
     return render_template("search.html", query=query, topics=results)

@@ -1,32 +1,42 @@
 {% extends "layout.html" %}
-
 {% block content %}
-    <h1>Search Results</h1>
+
+<section id="search-1">
+  <div class="content">
+    <h2> Search Results </h2>
 
     {% if query %}
-        <p>You searched for: <strong>"{{ query }}"</strong></p>
+    <p> {{ topics|length }} result{{ 's' if topics|length != 1 else '' }} found for <b> "{{ query }}" </b> </p>
     {% endif %}
+  </div>
+</section>
 
-    {% if topics %}
-        <p>{{ topics|length }} result{{ 's' if topics|length != 1 }} found:</p>
-        <ul>
-            {% for topic in topics %}
-                <li>
-                    <a href="{{ url_for('topic', id=topic.id) }}">
-                        <h3>{{ topic.name }}</h3>
-                    </a>
-                    {% if topic.content %}
-                        <p>{{ topic.content | truncate(150, True, '...') }}</p>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+<section id="search-2">
+  <div class="content"> 
+  {% if topics %}
+  <ul>
+    {% for topic in topics %}
+    <li>
+      <a href="{{ url_for('topic', id=topic.id) }}">
+        <h3>{{ topic.name }}</h3>
+        <p> {{ topic.summary }} </p>
+        <p class="keywords"> {{ topic.keywords }} </p>
+        <img src="{{ topic.image }}">
+      </a>
+      {% if topic.content %}
+      <p>{{ topic.content | truncate(150, True, '...') }}</p>
+      {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
     {% else %}
-        {% if query %}
-            <p>No topics found matching "<strong>{{ query }}</strong>".</p>
-            <p>Please try a different search term.</p>
-        {% else %}
-            <p>Please enter a search query to find topics.</p>
-        {% endif %}
+    {% if query %}
+      <p>Please try a different search term.</p>
+      {% else %}
+      <p>Please enter a search query to find topics.</p>
+      {% endif %}
     {% endif %}
+</div>
+</section>
+
 {% endblock %}

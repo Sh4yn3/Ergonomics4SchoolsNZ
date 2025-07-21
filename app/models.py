@@ -29,7 +29,7 @@ class Articles(db.Model):
     subheading = db.Column(db.Text())
     content = db.Column(db.Text())
     template_type = db.Column(db.Integer())
-    belongs_to = db.Column(db.Text())
+    topic_for = db.Column(db.Text())
 
 
 class Resources(db.Model):

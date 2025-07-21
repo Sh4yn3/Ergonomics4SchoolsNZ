@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    sodipodi:docname="collapse.svg"
-   inkscape:export-filename="collapse.svg"
+   inkscape:export-filename="collapse.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.1803535"
-     inkscape:cx="50.408628"
-     inkscape:cy="193.58608"
+     inkscape:zoom="0.59017675"
+     inkscape:cx="-136.39982"
+     inkscape:cy="80.484363"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -42,8 +42,9 @@
      transform="translate(-36.856545,-0.05271023)">
     <path
        style="fill:#fbcb6d;stroke:#9f663b;stroke-width:0.494475;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-       d="M 37.103783,0.34566554 V 85.629461 h 0.02402 l 15.767035,-24.85061 16.693559,24.85061 h 0.02403 V 0.34566554 Z"
-       id="rect1" />
+       d="M 37.103783,0.34566554 V 85.629461 h 0.02402 L 53.277496,74.12305 69.588397,85.629461 h 0.02403 V 0.34566554 Z"
+       id="rect1"
+       sodipodi:nodetypes="cccccccc" />
     <path
        id="rect2"
        style="fill:#fbcb6d;stroke-width:0.26791;paint-order:markers fill stroke"
