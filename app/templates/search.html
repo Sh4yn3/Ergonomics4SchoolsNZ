@@ -14,29 +14,33 @@
 <section id="search-2">
   <div class="content"> 
   {% if topics %}
-  <ul>
+
     {% for topic in topics %}
-    <li>
+    <div class="result">
       <a href="{{ url_for('topic', id=topic.id) }}">
-        <h3>{{ topic.name }}</h3>
-        <p> {{ topic.summary }} </p>
-        <p class="keywords"> {{ topic.keywords }} </p>
-        <img src="{{ topic.image }}">
+        <div class="thumbnail">
+          <img src="{{ topic.image }}" alt="Image for {{ topic.name }}">
+        </div>
+        <div class="result-text">
+          <h3>{{ topic.name }}</h3>
+          <p>{{ topic.summary }}</p>
+          <p class="keywords">KEYWORDS: {{ topic.keywords }}</p>
+        </div>
       </a>
-      {% if topic.content %}
-      <p>{{ topic.content | truncate(150, True, '...') }}</p>
-      {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
+    </div>
+    {% if topic.content %}
+    <p> {{ topic.content | truncate(150, True, '...') }}
+    {% endif %}
+    {% endfor %}
+
     {% else %}
     {% if query %}
-      <p>Please try a different search term.</p>
+      <p> Please try a different search term. </p>
       {% else %}
-      <p>Please enter a search query to find topics.</p>
+      <p> Please enter a search query to find topics. </p>
       {% endif %}
     {% endif %}
-</div>
+  </div>
 </section>
 
 {% endblock %}

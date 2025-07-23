@@ -26,11 +26,6 @@ body {
 p {
     margin: 0px;
     padding-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-li {
-    transition: all 0.3s ease;
 }
 
 h1 {
@@ -40,7 +35,6 @@ h1 {
     font-weight: 400;
     font-style: normal;
     font-size: 28px;
-    transition: all 0.3s ease;
 }
 
 h2 {
@@ -49,14 +43,12 @@ h2 {
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
-    transition: all 0.3s ease;
 }
 
 a.link {
     text-decoration: none;
     font-weight: bold;
     color: #67e4f2;
-    transition: all 0.3s ease;
 }
 
 .light-mode a.link {
@@ -69,6 +61,7 @@ a.link:hover {
     text-decoration: none;
     font-weight: bold;
     color: #35abb8;
+    transition: all 0.3s ease;
 }
 
 
@@ -89,18 +82,17 @@ a.link:hover {
 .default-button {
     display: inline-block;
     padding: 10px 20px;
+    margin: 10px 0px;
     border: 2px solid #F7F7F7;
     color: #F7F7F7;
     text-decoration: none;
     border-radius: 5px;
     font-family: sans-serif;
     position: relative;
-    transition: all 0.3s ease;
     overflow: hidden;
 }
 
 .light-mode .default-button {
-    transition: all 0.3s ease;
     color: #2a2b34;
     border: 2px solid #2a2b34;
 }
@@ -108,13 +100,13 @@ a.link:hover {
 .blue-button {
     display: inline-block;
     padding: 10px 20px;
+    margin: 10px 0px;
     border: 2px solid #377A99;
     color: #377A99;
     text-decoration: none;
     border-radius: 5px;
     font-family: sans-serif;
     position: relative;
-    transition: all 0.3s ease;
     overflow: hidden;
 }
 
@@ -279,13 +271,14 @@ nav.hidden {
 #home-1 .home-container { 
     padding: 10px 0px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
 }
 
-#home-1 .home-text { 
+#home-1 .home-text {
+    margin: 20px 0px 0px 0px;
     flex: 1;
     min-width: 300px;
 }
@@ -295,16 +288,14 @@ nav.hidden {
 }
 
 #home-1 .home-image img {
-    max-width: 300px;
+    max-width: 320px;
     height: auto;
 }
-
-#home-1 .img {height: 50px}
 
 #home-1 .welcome {
     color: #67e4f2;
     font-size: 24px;
-    padding: 30px 0px 5px 0px;
+    padding: 50px 0px 5px 0px;
 }
 
 .light-mode .welcome {
@@ -314,7 +305,7 @@ nav.hidden {
 #home-1 .title-card {
     font-size: 36px;
     font-family: "Special Elite", system-ui;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     border-bottom: double;
 }
 
@@ -358,8 +349,73 @@ nav.hidden {
 
 /* Page: Search */
 
+#search-1 h2 {
+    margin-top: 100px;
+}
 
+.result {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
 
+.result a {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.thumbnail {
+    flex: 0 0 160px;
+    height: 120px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+
+.thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.result-text {
+    flex: 1;
+    margin: 0px 0px 0px 10px; 
+}
+
+.result-text h3 {
+    font-size: 18px; 
+    margin: 0px;
+}
+
+.result-text h3:hover {
+    text-decoration: underline;
+}
+
+.result-text p {
+    color: #d6dada;
+}
+
+.light-mode .result-text p {
+    color: #404955;
+}
+
+.result-text .keywords {
+    font-size: 10px;
+    font-weight: bold;
+    color: #98acc0;
+    text-transform: uppercase;
+}
+
+.light-mode .result-text .keywords {
+    color: #8b97a2;
+}
 
 /* Page: Career */
 
