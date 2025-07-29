@@ -5,8 +5,14 @@ TopicResources = db.Table("TopicResources",
                           db.Column("topic_id", db.Integer,
                                     db.ForeignKey("Topics")),
                           db.Column("resource_id", db.Integer,
-                                    db.ForeignKey("Resources"))
-                          )
+                                    db.ForeignKey("Resources")))
+
+
+ResearchResources = db.Table("ResearchResources",
+                             db.Column("research_id", db.Integer,
+                                       db.ForeignKey("Research")),
+                             db.Column("resource_id", db.Integer,
+                                       db.ForeignKey("Resources")))
 
 
 class Topics(db.Model):
@@ -20,6 +26,20 @@ class Topics(db.Model):
     last_updated_on = db.Column(db.Text())
     keywords = db.Column(db.Text())
     summary = db.Column(db.Text())
+
+
+class Research(db.Model):
+    __tablename__ = "Research"
+    id = db.Column(db.Integer, primary_key=True)
+    slug = db.Column(db.Text())
+    title = db.Column(db.Text())
+    authors = db.Column(db.Text())
+    publishers = db.Column(db.Text())
+    image = db.Column(db.Text())
+    introduction = db.Column(db.Text())
+    content = db.Column(db.Text())
+    date = db.Column(db.Text())
+
 
 class Articles(db.Model):
     __tablename__ = "Articles"

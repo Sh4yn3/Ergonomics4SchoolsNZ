@@ -46,15 +46,17 @@ def careers():
 
 
 # topic list route
-@app.route("/topics")
+@app.route("/learning-zone")
 def topiclist():
     topics = models.Topics.query.all()
-    return render_template("topics_list.html", page_title="LIST OF TOPICS",
-                           topics=topics)
+    research = models.Research.query.all()
+
+    return render_template("learningzone.html", page_title="LIST OF TOPICS",
+                           topics=topics, research=research)
 
 
 # topics route
-@app.route("/topic/<int:id>")
+@app.route("/learning-zone/topic/<int:id>")
 def topic(id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
     articles = models.Articles.query.filter_by(topic_id=id).all()
@@ -73,6 +75,16 @@ def topic(id):
                            photo=photo, resource=resource)
 
 
+@app.route("/learning-zone/research/<int:id>")
+def research(id):
+    research = models.Research.query.filter_by(id=id).first_or_404()
+    resource = models.Resources.query.filter_by(id=id).all()
+
+    return render_template("research.html", research=research,
+                           resource=resource)
+
+
+# search route and function
 @app.route("/search")
 def search():
     query = request.args.get("q", "").strip()

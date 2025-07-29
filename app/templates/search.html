@@ -3,11 +3,17 @@
 
 <section id="search-1">
   <div class="content">
+
     <h2> Search Results </h2>
+
+    <form action="/search" method="get">
+      <input type="text" name="q" placeholder="Search..." class="search-input">
+    </form>
 
     {% if query %}
     <p> {{ topics|length }} result{{ 's' if topics|length != 1 else '' }} found for <b> "{{ query }}" </b> </p>
     {% endif %}
+
   </div>
 </section>
 
@@ -18,14 +24,17 @@
     {% for topic in topics %}
     <div class="result">
       <a href="{{ url_for('topic', id=topic.id) }}">
+        
         <div class="thumbnail">
           <img src="{{ topic.image }}" alt="Image for {{ topic.name }}">
         </div>
+
         <div class="result-text">
           <h3>{{ topic.name }}</h3>
           <p>{{ topic.summary }}</p>
           <p class="keywords">KEYWORDS: {{ topic.keywords }}</p>
         </div>
+
       </a>
     </div>
     {% if topic.content %}

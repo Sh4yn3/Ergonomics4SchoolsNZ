@@ -10,23 +10,42 @@
     </div>
 </section>
 
+<section id="tp-header">
+  <h1> List of Topics </h1>
+</section>
+
 <section id="tp-list" class="content">
   {% for topic in topics %}
   <div class="tpl-box">
     <div class="tpl-header">
       <button type="button" class="tpl-toggle"> &gt; </button>
-      <a href="/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name }} </a>
+      <a href="/learning-zone/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name.title() }} </a>
     </div>
     <div class="tpl-summary">
-      <p>{{ topic.summary or "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et sagittis sem, vitae pulvinar felis. Sed tincidunt pretium purus at tincidunt." }}</p>
+      <p>{{ topic.summary or "..." }}</p>
       <p>Keywords: {{ topic.keywords }} </p>
     </div>
   </div>
   {% endfor %}
 </section>
 
-<section id="tp-research">
+<section id="tp-header">
+  <h1> Research Reports </h1>
+</section>
 
+<section id="tp-research" class="content">
+  {% for research in research %}
+  <div class="tpl-box">
+    <div class="tpl-header">
+      <button type="button" class="tpl-toggle"> &gt; </button>
+      <a href="/learning-zone/research/{{ research.id }}" class="tpl-name"> {{ research.title.title() }} </a>
+    </div>
+    <div class="tpl-summary">
+      <p> {{ research.introduction }} </p>
+      <p> Author(s): {{ research.authors }} </p>
+    </div>
+  </div>
+  {% endfor %}
 </section>
 
 <!-- Collapse & Uncollapse Summary -->
