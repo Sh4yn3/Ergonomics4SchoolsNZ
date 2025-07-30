@@ -7,7 +7,8 @@
     <h2> Search Results </h2>
 
     <form action="/search" method="get">
-      <input type="text" name="q" placeholder="Search..." class="search-input">
+      <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="90">
+      <button type="submit" onclick="limitFunction()"><i class="fi fi-br-search"></i></button>
     </form>
 
     {% if query %}

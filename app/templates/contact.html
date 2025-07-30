@@ -19,8 +19,8 @@
     </label>
 
     <label>Email address <span class="required">*</span>
-      <input type="email" name="email" required>
-      <div class="note">* we cannot answer your question without an email address or if it's incorrect, so please check it carefully.</div>
+      <input type="email" maxlength="256" name="email" required>
+      <div class="note">* we cannot respond back without an email address or if it's incorrect, so please check it carefully </div>
     </label>
 
     <label>Are you a student, teacher, or other?</label>
@@ -47,7 +47,7 @@
 
     <div id="studentInfo" class="hide">
       <label>How old are you?
-        <input type="text" name="age">
+        <input type="number" class="age" name="age" min="1" max="125">
       </label>
 
       <label>What subjects are you studying?
@@ -91,6 +91,19 @@
       otherInput.classList.add('hide');
     }
   }
+</script>
+
+<script>
+document.getElementsByClassName('age')[0].oninput = function () {
+        let max = parseInt(this.max);
+        let min=parseInt(this.min);
+        if (parseInt(this.value) > max) {
+            this.value = max; 
+        } else if(parseInt(this.value) < min){
+          this.value = min
+        }
+    }
+// https://codepen.io/Cb_Biggs/pen/LYJoQbM
 </script>
 
 {% endblock %}

@@ -209,13 +209,13 @@ nav {
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid #F7F7F7;
+    border: 3px solid #F7F7F7;
     border-radius: 5px;
     padding: 7px 8px 4px 8px; 
 }
 
 .nav-link a.contact {
-    border: 2px solid #F7F7F7;
+    border: 3px solid #F7F7F7;
     border-radius: 5px;
     padding: 4px 8px; 
 }
@@ -227,7 +227,7 @@ nav {
 .light-mode .navbar i,
 .light-mode a.contact {
     color: #1a191b;
-    border: 2px solid #1a191b;
+    border: 3px solid #1a191b;
 }
 
 .navbar .nav-link a:hover,
@@ -286,7 +286,8 @@ nav.hidden {
 }
 
 .search-input:-webkit-autofill,
-.search-input:-webkit-autofill:focus {
+.search-input:-webkit-autofill:focus,
+.search-input:-webkit-autofill:active {
     transition: background-color 0s 0s, color 0s 0s;
     transition-delay: calc(infinity * 1s);
 }
@@ -726,7 +727,7 @@ input[type="text"], input[type="email"], textarea {
 
 .boxed-content {
     border: double 2px #4cb0bd6f ;
-    color: #051320;
+    color: #e2e1db;
     padding: 15px;
     border-radius: 10px;
 }

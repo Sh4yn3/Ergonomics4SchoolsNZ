@@ -20,32 +20,29 @@ def root():
     return render_template("home.html", page_title="HOME")
 
 
-# about route
 @app.route("/about")
 def about():
     return render_template("about.html", page_title="ABOUT US")
 
 
-# contact route
 @app.route("/contact")
 def contact():
     return render_template("contact.html", page_title="CONTACT US")
 
 
-# for contact
+# for contact's form to work
 @app.route("/add")
 def add():
     name = request.args.get("name")
     return render_template("contact.html", title=name)
 
 
-# careers advice
 @app.route("/career-advice")
 def careers():
     return render_template("careers.html", page_title="CAREER ADVICE")
 
 
-# topic list route
+# showcases a list of options that leads to a topic/research letter
 @app.route("/learning-zone")
 def topiclist():
     topics = models.Topics.query.all()
@@ -55,7 +52,12 @@ def topiclist():
                            topics=topics, research=research)
 
 
-# topics route
+@app.route("/learning-zone/topic/ergonomics")
+def ergonomics():
+    return render_template("ergonomics.html")
+
+
+# loads in information about the user's chosen topic
 @app.route("/learning-zone/topic/<int:id>")
 def topic(id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
@@ -75,6 +77,7 @@ def topic(id):
                            photo=photo, resource=resource)
 
 
+# loads in information about a research letter
 @app.route("/learning-zone/research/<int:id>")
 def research(id):
     research = models.Research.query.filter_by(id=id).first_or_404()
@@ -97,6 +100,7 @@ def search():
     return render_template("search.html", query=query, topics=results)
 
 
+# error route
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
