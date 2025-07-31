@@ -77,6 +77,29 @@ a.link:hover {
 
 /* Buttons and Borders */
 
+.box {
+    background-color: #092238;
+    margin: 20px 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.boxed-content {
+    border: double 2px #4cb0bd6f ;
+    color: #e2e1db;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.light-mode .box {
+    background-color: #f3f2ee;
+}
+
+.light-mode .boxed-content {
+    border: double 2px #b9b2a36f;
+    color: #434047;
+}
+
 .photo-wrapper {
   justify-content: center;
   margin: 10px 0px;
@@ -434,11 +457,11 @@ nav.hidden {
 
 #search-1 .search-input {
     background: #F7F7F7;
-    border: solid 2px #15304C;
     color: #2a3f59;
     font-size: 16px;
     padding: 5px;
     width: 120px;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
@@ -448,6 +471,50 @@ nav.hidden {
 
 #search-1 .search-input:focus {
     outline: none;
+}
+
+#search-1 form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#search-1 input[type="text"] {
+    padding: 8px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+#search-1 button {
+    background: transparent;
+    color: #f0f0f0;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 3px solid #F7F7F7;
+    border-radius: 12px;
+    padding: 8px 8px 4px 8px;
+    cursor: pointer
+}
+
+.light-mode #search-1 button {
+    background: transparent;
+    color: #051320;
+    border: 3px solid #051320;
+}
+
+#search-1 button:hover {
+    background: #f0f0f0;
+    color: #193652;
+    transition: all 0.3s ease;
+}
+
+.light-mode #search-1 button:hover {
+    background: #051320;
+    color: #F7F7F7;
+    transition: all 0.3s ease;
 }
 
 #search-1 h2 {
@@ -520,45 +587,17 @@ nav.hidden {
 }
 
 
-/* Page: Search | Search Bar Styling */
-#search-1 form {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-#search-1 input[type="text"] {
-    padding: 8px;
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
-}
-
-#search-1 button {
-    padding: 8px 16px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.light-mode #search-1 button {
-    background-color: #ccc;
-    color: black;
-}
-
-
-
 /* Page: Career */
 
 #career-s1 h1 {
     margin-top: 100px;
 }
 
+
 /* Page: About Us */
-#about-s1 h1 {
-    margin-top: 100px;
+
+#about-s1 .box {
+    margin-top: 100px ;
 }
 
 /* Page: 404 ERROR */
@@ -714,29 +753,4 @@ input[type="text"], input[type="email"], textarea {
 
 .hide {
     display: none;
-}
-
-/* Page: Research */
-
-.box {
-    background-color: #092238;
-    margin: 20px 200px;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.boxed-content {
-    border: double 2px #4cb0bd6f ;
-    color: #e2e1db;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.light-mode .box {
-    background-color: #f3f2ee;
-}
-
-.light-mode .boxed-content {
-    border: double 2px #b9b2a36f;
-    color: #434047;
 }

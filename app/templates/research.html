@@ -5,10 +5,11 @@
     <p> {{research.date}} </p>
 </div>
 
+
+<h1 style="margin: 30px 200px; "> {{ research.title | safe  }} </h1>
+
 <section id="research-1" class="box">
     <div class="boxed-content">
-        <h1> {{ research.title  }} </h1>
-        <hr>
         <p> {{ research.authors }} </p>
         <p> {{ research.publishers }} </p>
     </div>

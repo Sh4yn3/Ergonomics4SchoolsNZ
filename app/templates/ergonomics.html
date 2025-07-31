@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="date">
+    July 31st, 2025
+</div>
+
+<section id="research-1" class="box">
+    <div class="boxed-content">
+        <h1> ERGONOMICS </h1>
+        <hr>
+        <p> {{ research.authors }} </p>
+        <p> {{ research.publishers }} </p>
+    </div>
+</section>
+
+<section id="research-2" class="box">
+    <div class="boxed-content">
+        {{ research.content | safe }}
+    </div>
+</section>
+{% endblock %}
