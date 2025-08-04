@@ -2,6 +2,7 @@ from app import app
 from flask import request
 from flask import render_template, abort
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 import os
 
 
@@ -95,8 +96,16 @@ def search():
     if not query:
         return render_template("search.html", query=query, topics=[])
 
-    results = models.Topics.query.filter(models.Topics.name.ilike(f"%{query}%")).all()
-
+    results = models.Topics.query.filter(or_(
+        models.Topics.name.ilike(f"%{query}%"),
+        models.Topics.keywords.like(f"%{query}%"),
+        models.Topics.summary.like(f"%{query}%"),
+        models.Research.title.ilike(f"%{query}%"),
+        models.Research.authors.like(f"%{query}%"),
+        models.Research.publishers.like(f"%{query}%"),
+        models.Research.introduction.like(f"%{query}%")
+    )).all()
+    
     return render_template("search.html", query=query, topics=results)
 
 

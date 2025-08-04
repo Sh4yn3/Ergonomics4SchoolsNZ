@@ -5,11 +5,10 @@
     <p> {{research.date}} </p>
 </div>
 
-
-<h1 style="margin: 30px 200px; "> {{ research.title | safe  }} </h1>
-
 <section id="research-1" class="box">
     <div class="boxed-content">
+        <h1> {{ research.title | safe  }} </h1>
+        <hr>
         <p> {{ research.authors }} </p>
         <p> {{ research.publishers }} </p>
     </div>
@@ -17,7 +16,14 @@
 
 <section id="research-2" class="box">
     <div class="boxed-content">
+        {{ research.introduction | safe }}
+    </div>
+</section>
+
+<section id="research-3" class="box">
+    <div class="boxed-content">
         {{ research.content | safe }}
     </div>
 </section>
+
 {% endblock %}

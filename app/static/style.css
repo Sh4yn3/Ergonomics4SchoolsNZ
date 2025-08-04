@@ -2,7 +2,6 @@
 
 html {
     scroll-behavior: smooth;
-    height: 1000px;
 }
 
 body {
@@ -258,7 +257,8 @@ nav {
 .nav-link a.contact:hover {
     color: #67e4f2;
     border-color: #67e4f2;
-    transition: top 0.3s;
+    transition: all ease 0.3s;
+    cursor: pointer;
 }
 
 .light-mode .navbar .nav-link a:hover,
@@ -279,16 +279,15 @@ nav.hidden {
     top: -90px;
 }
 
-
 /* Navbar Searchbar */
 .search-input {
     background: transparent;
     border: none;
     border-bottom: 2px solid white;
     color: white;
-    font-size: 16px;
-    padding: 5px;
-    width: 120px;
+    font-size: 14px;
+    padding: 3.5px;
+    width: 700px;
     transition: all 0.3s ease;
 }
 
@@ -485,6 +484,13 @@ nav.hidden {
     flex: 1;
     min-width: 250px;
     max-width: 400px;
+    border: 3px solid #728496;
+    transition: none;
+}
+
+.light-mode #search-1 input[type="text"] {
+    border: 3px solid #051320;
+    transition: none;
 }
 
 #search-1 button {
@@ -679,6 +685,7 @@ nav.hidden {
     padding: 12px 12px;
     flex-grow: 1;
     border-radius: 0px 20px 0px 0px;
+    border: 2px solid #000000;
 }
 
 a.tpl-name:hover {
@@ -708,13 +715,13 @@ a.tpl-name:hover {
     margin-top: 100px;
 }
 
-label {
+#contact-s1 label {
     display: block;
     margin-top: 10px;
     font-weight: bold;
 }
 
-input[type="text"], input[type="email"], textarea {
+#contact-s1 input[type="text"], input[type="email"], textarea {
     display: block;
     width: 800px;
 }
@@ -754,3 +761,11 @@ input[type="text"], input[type="email"], textarea {
 .hide {
     display: none;
 }
+
+/* Footer */
+
+#footer .container {
+    display: flex;
+}
+
+#footer 
