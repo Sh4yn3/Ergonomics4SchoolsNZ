@@ -410,44 +410,40 @@ nav.hidden {
 }
 
 #home-2 {
-    background-color: #4c798c;
-    padding: 350px 0px;
-}
-
-#home-3 {
     background-repeat: repeat;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-#home-3 .title-card {
+#home-2 .title-card {
     padding: 30px 0px;
     text-align: center;
     font-weight: bold;
 }
 
-#home-3 .card-row-container {
+#home-2 .cards {
     color: #2a2b34;
     padding: 20px 0px;
     display: flex;
-    justify-content: space-around;
-    gap: 5px;
+    justify-content: center;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
-#home-3 .info-card {
-    background-image:url("/static/bg/Paperboard_White.png");
+#home-2 .card {
+    background-image: url(/static/bg/Paperboard_White.png);
     background-blend-mode: multiply;
+    font-size: 18px;
     border-radius: 10px;
     padding: 30px;
-    width: calc(25% - 30px);
+    width: calc(24% - 30px);
     box-shadow: 0 4px 8px #0000001a;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
-    min-height: 250px;
+    min-height: 300px;
     overflow: hidden;
 }
 
@@ -627,24 +623,39 @@ nav.hidden {
 
 /* Page: Learning Zone */
 
-#tp-intro {
+#learningzone-1 {
     margin-top: 90px;
     text-align: center;
     padding: 20px 0px;
 }
 
-#tp-list {
+#learningzone-2 {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: flex-start;
 }
 
-#tp-header h1 {
+.lz-intro {
+    display: flex;
+}
+
+.lz-welcome {
+    flex: 1;
+    gap: 10px;
+}
+
+.lz-ergo img {
+    padding-top: 20px;
+    max-width: 200px;
+    height: auto;
+}
+
+#lz-header h1 {
     padding: 20px 0px;
 }
 
-.tpl-box {
+.lz-box {
     flex: 0 0 calc(33.333% - 10.66px);
     box-sizing: border-box;
     padding: 0;
@@ -654,12 +665,12 @@ nav.hidden {
     overflow: hidden;
 }
 
-.tpl-header {
+.lz-header {
     display: flex;
     align-items: center;
 }
 
-.tpl-toggle {
+.lz-toggle {
     background-color: #d4dde3;
     color: #3d7da7;
     font-weight: bold;
@@ -673,11 +684,11 @@ nav.hidden {
     border-right: solid 2px #2a3f59;
 }
 
-.tpl-toggle:hover {
+.lz-toggle:hover {
     color: #4d5961;
 }
 
-.tpl-name {
+.lz-name {
     background-color: #4983aa;
     color: #F7F7F7;
     text-decoration: none;
@@ -688,11 +699,11 @@ nav.hidden {
     border: 2px solid #000000;
 }
 
-a.tpl-name:hover {
+a.lz-name:hover {
     text-decoration: underline;
 }
 
-.tpl-summary {
+.lz-summary {
     max-height: 0;
     overflow: hidden;
     background-color: #36597d;
@@ -701,15 +712,27 @@ a.tpl-name:hover {
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
-
-
-.tpl-summary.active {
+.lz-summary.active {
     max-height: 500px; 
     padding: 10px;
 }
 
 
-/* PAGE: Contact */
+/* Page: Research Letters */
+
+#research-2 .boxed-content {
+    border-left:  solid 40px #4cb0bd6f;
+    padding: 0px 15px 0px 5px !important;
+    border-radius: 10px;
+}
+
+#research-2 .boxed-content-2 {
+    border-left: solid 5px #4cb0bd6f;
+    padding: 15px 0px 15px 15px !important;
+}
+
+
+/* Page: Contact */
 
 #contact-s1 h1 {
     margin-top: 100px;
@@ -768,4 +791,6 @@ a.tpl-name:hover {
     display: flex;
 }
 
-#footer 
+#footer {
+    background: linear-gradient(#00000023), url("/static/bg/Paper_Tiled_Blue.png");
+}

@@ -1,27 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<section id="tp-intro">  
+<section id="learningzone-1">
     <div class="content">
-        <h1> Welcome to the Learning Zone! </h1>
-        <p> Topics in the Learning Zone contains descriptions, design guidelines, and tips on what to do.
-            Select a topic and explore, if you don't know what you're looking for, click the magnefying glass
-            for a drop down of keywords and the summary  </p>
+      <div class="lz-intro">
+        <div class="lz-welcome">
+          <h1> Welcome to the Learning Zone! </h1>
+          <p> Topics in the Learning Zone contains descriptions, design guidelines, and tips on what to do.
+              Select a topic and explore, if you don't know what you're looking for, click the magnefying glass
+              for a drop down of keywords and the summary  </p>
+        </div>
+        <div class="lz-ergo">
+          <img src="/static/icon/Mascot2.png">
+          <p> What is Ergonomics? </p>
+        </div>
+      </div>
+      <div class="lz-toggle-all">
+          <button> Expand All </button>
+          <button> Collapse All </button>
+      </div>
     </div>
 </section>
 
-<section id="tp-header">
+<section id="lz-header" class="content"> 
   <h1> List of Topics </h1>
 </section>
 
-<section id="tp-list" class="content">
+<section id="learningzone-2" class="content">
   {% for topic in topics %}
-  <div class="tpl-box">
-    <div class="tpl-header">
-      <button type="button" class="tpl-toggle"> &gt; </button>
-      <a href="/learning-zone/topic/{{ topic.id }}" class="tpl-name"> {{ topic.name.title() }} </a>
+  <div class="lz-box">
+    <div class="lz-header">
+      <button type="button" class="lz-toggle"> &gt; </button>
+      <a href="/learning-zone/topic/{{ topic.id }}" class="lz-name"> {{ topic.name }} </a>
     </div>
-    <div class="tpl-summary">
+    <div class="lz-summary">
       <p>{{ topic.summary or "..." }}</p>
       <p>Keywords: {{ topic.keywords }} </p>
     </div>
@@ -29,18 +41,18 @@
   {% endfor %}
 </section>
 
-<section id="tp-header">
+<section id="lz-header" class="content">
   <h1> Research Reports </h1>
 </section>
 
-<section id="tp-research" class="content">
+<section id="learningzone-3" class="content">
   {% for research in research %}
-  <div class="tpl-box">
-    <div class="tpl-header">
-      <button type="button" class="tpl-toggle"> &gt; </button>
-      <a href="/learning-zone/research/{{ research.id }}" class="tpl-name"> {{ research.title.title() }} </a>
+  <div class="lz-box">
+    <div class="lz-header">
+      <button type="button" class="lz-toggle"> &gt; </button>
+      <a href="/learning-zone/research/{{ research.id }}" class="lz-name"> {{ research.name }} </a>
     </div>
-    <div class="tpl-summary">
+    <div class="lz-summary">
       <p> {{ research.introduction }} </p>
       <p> Author(s): {{ research.authors }} </p>
     </div>
@@ -48,9 +60,10 @@
   {% endfor %}
 </section>
 
+
 <!-- Collapse & Uncollapse Summary -->
 <script>
-  var toggles = document.getElementsByClassName("tpl-toggle");
+  var toggles = document.getElementsByClassName("lz-toggle");
 
   for (var i = 0; i < toggles.length; i++) {
     toggles[i].addEventListener("click", function () {
@@ -66,5 +79,12 @@
   }
 </script>
 
+
+<!-- Collapse All -->
+<script>
+  const collapse = document.querySelector("nav-toggle")
+  const summary = document.getElementsByClassName("lz-summary")
+
+</script>
 
 {% endblock %}

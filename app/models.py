@@ -32,12 +32,14 @@ class Research(db.Model):
     __tablename__ = "Research"
     id = db.Column(db.Integer, primary_key=True)
     slug = db.Column(db.Text())
+    name = db.Column(db.Text())
     title = db.Column(db.Text())
     authors = db.Column(db.Text())
     publishers = db.Column(db.Text())
     image = db.Column(db.Text())
     introduction = db.Column(db.Text())
     content = db.Column(db.Text())
+    summary = db.Column(db.Text())
     date = db.Column(db.Text())
 
 
