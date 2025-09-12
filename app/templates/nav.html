@@ -1,123 +1,66 @@
 <nav>
-  <div class="navbar">
-    <div class="sidebar-open"></div>
-    <ul>
-      <li class="nav-logo"> <a href="/"> Ergonomics4SchoolsNZ </a></li>
-        <li class="nav-link"> <a href="/"> Home </a></li>
-        <li class="nav-link"> <a href="/learning-zone"> Topics List </a></li>
-        <li class="nav-link"> <a href="/career-advice"> Career Advice </a></li>
-        <li class="nav-link"> <a href="/about"> About Us </a></li>
-        <li class="nav-link"> <a class="contact" href="/contact"> Contact Us </a></li>
-        <li class="nav-link"> <a class="search" href="#search"><i class="fi fi-br-search"></i></a></li>
-        <li class="nav-link"> <a class="bg-mode" onclick="themeswitch()"><i class="fi fi-br-moon"></i></a></li>
+<div class="content">
+  <a href="/" class="logo">Ergonomics4SchoolsNZ</a>
+  <div class="right" id="navbar-right">
+    <a href="/">Home</a>
+    <a href="/learning-zone">Topic List</a>
+    <a href="/career-advice">Career Advice</a>
+    <a href="/about">About Us</a>
+    <a href="/contact" class="button">Contact Us</a>
 
-        <li class="nav-link search-bar search-hidden">
-          <form action="/search" method="get">
-            <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="90">
-          </form>
-        </li>
+    <form action="/search" method="get">
+      <input type="text" id="search-input" placeholder="Search..." maxlength="300"/>
+    </form>
 
-        <li class="nav-link exit-search search-hidden">
-          <a class="exit"> <i class="fi fi-br-cross"></i>
-          </a>
-        </li>
-      </ul>
+    <div class="icon" id="search-toggle"><i class="fi fi-br-search"></i></div>
+    <div class="icon" id="dl-mode"><i class="fi fi-br-moon"></i></div>
   </div>
+</div>
 </nav>
 
-<button class="nav-toggle" >
-  <img src="/static/icon/collapse.svg" oncontextmenu="return false;" draggable="false">
+<!-- Desktop Collapse Toggle -->
+<button class="desktop-toggle">
+  <img src="/static/assets/collapse.svg" oncontextmenu="return false;" draggable="false">
 </button>
 
-<!-- Collapsable Navbar -->
-<script>
-  const collapse = document.querySelector(".nav-toggle");
-  const nav = document.querySelector("nav");
+<!-- Mobile Collapse Toggle -->
+<button class="mobile-toggle" id="mobile-toggle">
+  <img src="/static/assets/collapse.svg" oncontextmenu="return false;" draggable="false">
+</button>
 
+
+<script>
+  // Toggles based on w3schools
+  // Desktop collapse toggle
+  const collapse = document.querySelector(".desktop-toggle");
+  const nav = document.querySelector("nav");
   collapse.addEventListener("click", () => {
     nav.classList.toggle("hidden");
     collapse.classList.toggle("hidden");
   });
-</script>
-<!-- based on www.w3schools.com -->
 
+  // Mobile menu toggle
+  const menuToggle = document.getElementById("mobile-toggle");
+  const navbarRight = document.getElementById("navbar-right");
+  menuToggle.addEventListener("click", () => {
+    navbarRight.classList.toggle("active");
+  });
 
-<!-- Light/Dark Toggler -->
-<script>
-    function themeswitch() {
-        const bodyElement = document.body;
-        const themeIcon = document.querySelector('.bg-mode i'); // Select the icon element
+  // Search toggle
+  const searchToggle = document.getElementById("search-toggle");
+  const searchInput = document.getElementById("search-input");
+  let searching = false;
 
-        // Toggle the 'light-mode' class
-        bodyElement.classList.toggle("light-mode");
+  searchToggle.addEventListener("click", () => {
+    searching = !searching;
+    navbarRight.classList.toggle("search-active", searching);
 
-        // Update icon and localStorage based on current theme
-        if (bodyElement.classList.contains("light-mode")) {
-            // If light mode is active, set sun icon and save 'light'
-            if (themeIcon) {
-                themeIcon.classList.remove("fi-br-moon");
-                themeIcon.classList.add("fi-br-sun");
-            }
-            localStorage.setItem('theme', 'light');
-        } else {
-            // If dark mode is active, set moon icon and save 'dark'
-            if (themeIcon) {
-                themeIcon.classList.remove("fi-br-sun");
-                themeIcon.classList.add("fi-br-moon");
-            }
-            localStorage.setItem('theme', 'dark');
-        }
+    if (searching) {
+      searchToggle.innerHTML = '<i class="fi fi-br-cross"></i>';
+      searchInput.focus();
+    } else {
+      searchToggle.innerHTML = '<i class="fi fi-br-search"></i>';
     }
-
-    // Applies the stored theme from localStorage when the DOM is fully loaded.
-    // Sets the body class and the correct theme icon.
-    document.addEventListener('DOMContentLoaded', () => {
-        const storedTheme = localStorage.getItem('theme');
-        const bodyElement = document.body;
-        const themeIcon = document.querySelector('.bg-mode i');
-
-        // Apply stored theme if found
-        if (storedTheme === 'light') {
-            bodyElement.classList.add('light-mode');
-            // Ensure icon is set correctly on load for light mode
-            if (themeIcon) {
-                themeIcon.classList.remove("fi-br-moon");
-                themeIcon.classList.add("fi-br-sun");
-            }
-        } else {
-            // Default to dark mode if no preference or 'dark' is stored
-            bodyElement.classList.remove('light-mode'); // Ensure dark mode is active
-            if (themeIcon) {
-                themeIcon.classList.remove("fi-br-sun");
-                themeIcon.classList.add("fi-br-moon");
-            }
-        }
-    });
+  });
 </script>
 
-<!-- Search Change -->
-<script>
-  const searchBtn = document.querySelector('.search');
-  const exitBtn = document.querySelector('.exit');
-  const navList = document.querySelector('.navbar ul');
-  const searchBar = document.querySelector('.search-bar');
-  const exitSearch = document.querySelector('.exit-search');
-
-  function toggleSearchBar() {
-    navList.classList.toggle('search-mode');
-    searchBar.classList.toggle('search-hidden');
-    exitSearch.classList.toggle('search-hidden');
-  }
-
-  if (searchBtn && exitBtn) {
-    searchBtn.addEventListener('click', (e) => {
-      e.preventDefault(); 
-      toggleSearchBar();
-    });
-
-    exitBtn.addEventListener('click', (e) => {
-      e.preventDefault(); 
-      toggleSearchBar();
-    });
-  }
-</script>

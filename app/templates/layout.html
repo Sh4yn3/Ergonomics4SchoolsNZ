@@ -1,28 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
- <head>
-   <title> Ergonomics4SchoolsNZ </title>
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title> Ergonomics4SchoolsNZ </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/style.css">
+        
+        <!-- Loads Fonts -->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Oxygen:wght@300;400;700&display=swap">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
+        
+        <!-- Loads Icons -->
+         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    </head>
 
-  <!-- Loads Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Oxygen:wght@300;400;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
-
-  <!-- Loads icons -->
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-
- </head>
-
- <body>
-   {% include "nav.html" %}
-   {% block content %}{% endblock %}
-   {% include "footer.html" %}
- </body>
-
-
+    <body>
+        {% include "nav.html" %}
+        {% block content %}{% endblock %}
+        {% include "footer.html" %}
+    </body>
 </html>

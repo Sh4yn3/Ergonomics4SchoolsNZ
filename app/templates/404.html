@@ -1,14 +1,25 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block content %}
+<style>
+#error {
+    align-items: center;
+    text-align: center;
+}
+
+#error img {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+</style>
 
 <section id="error">
-
     <h1> Uh oh! </h1>  
-    <img src="/static/icon/Mascot4.png" alt="Apologetic_Mascot" oncontextmenu="return false;" draggable="false">
+    <img src="/static/assets/Mannequin_4.png" alt="Apologetic_Mascot" oncontextmenu="return false;" draggable="false">
     <p> Sorry, the page you're looking for does not exist! </p>
-    <a class="default-button" href="/"> Return Home </a>
-    <a class="default-button" href="/contact"> Contact Us </a>
-    
+    <a class="button" href="/"> Return Home </a>
+    <a class="button" href="/contact"> Contact Us </a>
 </section>
 
 {% endblock %}

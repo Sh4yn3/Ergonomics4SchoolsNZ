@@ -1,100 +1,245 @@
 {% extends "layout.html" %}
 {% block content %}
+<style>
+/* === CONTACT ==== */
 
-<section id="contact-s1">
-    <div class="content">
-        <h1> Contact Us </h1>
+.hide {
+    display: none;
+}
+
+#contact .textbox {
+    display: flex;
+    gap: 20px;
+}
+
+/* CONTACT: ALTINFO */
+
+#altinfo {
+    flex: 1;
+    padding: 20px;
+    background: var(--base-variant-1);
+    border-radius: 8px;
+}
+
+
+/* CONTACT: ASKHERE */
+#askhere {
+    background: var(--base-variant-1);
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--color-h1);
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#askhere h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+#askhere {
+    background: var(--base-color);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#askhere .box {
+    background: var(--base-variant-1);
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #00000030;
+    max-width: 600px;
+    width: 100%;
+}
+
+#askhere form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#askhere label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: var(--color-h1);
+    font-size: 0.95em;
+    gap: 6px;
+}
+
+#askhere input, textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-1);
+    font-size: 1em;
+    outline: none;
+    transition: 0.2s ease;
+    background: var(--base-color);
+    color: var(--color-p);
+}
+
+#askhere input:focus, textarea:focus {
+    border-color: var(--highlight-1);
+    box-shadow: 0 0 6px var(--highlight-1);
+}
+
+#askhere textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#askhere .radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 6px;
+}
+
+#askhere .radio label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+#askhere .note {
+    font-size: 0.85em;
+    color: var(--color-p);
+    margin-top: 4px;
+}
+
+#askhere .required {
+    color: var(--highlight-1);
+    font-weight: bold;
+}
+
+#askhere button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-1);
+    color: var(--base-color);
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: var(--highlight-1);
+    transform: scale(1.02);
+}
+
+</style>
+<section id="contact-info">
+    <div class="textbox">
+        <h1> Ask Us! </h1>
+        <p> Doing a school project? We're here to help! First of all, please read about the topic related to your project in
+            the Ergonomics 4 Schools Learning Zone. Then check the FAQ list to see if the answer that you're looking for is
+            already there. If you still need help or information, simply ask us by filling in the form below. Please make sure
+            that the information that you give us is clear and correct, ESPECIALLY YOUR EMAIL ADDRESS, otherwise we can't reply to you! </p>
+
+        <p> Make sure your question is clear too, so that we can give you the answer you need. We can't guarantee to do your project for you,
+            but we'll do our best to help. We will reply to you by email within a few days. </p>
     </div>
 </section>
 
-<section id="contact-s2" class="box">
-<div class="boxed-content">
-{% if submitted %}
-<p> Thank You, your message has been received! </p>
-{% endif %}
-
-<form action="/add" method="POST">
-    <label>Name
-      <input type="text" name="name">
-    </label>
-
-    <label>Email address <span class="required">*</span>
-      <input type="email" maxlength="256" name="email" required>
-      <div class="note">* we cannot respond back without an email address or if it's incorrect, so please check it carefully </div>
-    </label>
-
-    <label>Are you a student, teacher, or other?</label>
-    <div class="contact-radio">
-    <label>
-        <input type="radio" name="role" value="student" onclick="updateVisibility()"> Student
-    </label>
-
-    <label>
-        <input type="radio" name="role" value="teacher" onclick="updateVisibility()"> Teacher
-    </label>
-
-    <label class="other-option">
-        <input type="radio" name="role" value="other" onclick="updateVisibility()"> Other /
-        <input type="text" name="other_role" id="otherInput" class="inline-input hide" placeholder="Specify Occupation">
-    </label>
+<section id="contact">
+<div class="textbox">
+    <div id="altinfo">
+        <div class="info">
+            <h2> Why do you need all these details? </h2>
+            The information that you give us will be used to check that we are reaching our
+            intended audience of school students and teachers studying ergonomics. It will
+            also help us to give you an answer in the right form and depth. We will not make
+            the information available to anyone outside the IEHF.
+        </div>
+        <div class="info">
+            <h2> What if I'm not a Student / Teacher? </h2>
+            <p> If you are not a school teacher or student, you should go to the main IEHF site and see if the information you need is there </p>
+            <a href="https://ergonomics.org.uk/"> (Link to Site) </a>
+            <p> If not, you can contact the IEHF using the details below. </p>
+        </div>
     </div>
+    <div id="askhere">
+    <div class="box">
+        {% if submitted %}
+        <p> Thank you, your message has been received! </p>
+        {% endif %}
 
-    <div id="schoolInfo" class="hide">
-      <label>School
-        <input type="text" name="school">
-      </label>
+    <form action="/add" method="POST">
+        <label> Name
+            <input type="text" name="name">
+        </label>
+        
+        <label> Email Address
+            <span class="required">*</span>
+            <input type="email" maxlength="256" name="email" required>
+            <div class="note"> *we cannot respond back without email address or an incorrect one, please check it carefully! </div>
+        </label>
+
+        <label> Are you a teacher or student? </label>
+        <div class="radio">
+            <label> <input type="radio" name="role" value="student" onclick="updateVisibility()"> Student </label>
+            <label> <input type="radio" name="role" value="teacher" onclick="updateVisibility()"> Teacher </label>
+        </div>
+
+        <div id="teacherInfo" class="hide">
+            <label> Which school do you teach?
+                <input type="text" name="school">
+            </label>
+        </div>
+
+        <div id="studentInfo" class="hide">
+            <label> Which school do you attend?
+                <input type="text" name="school">
+            </label>
+            <label>How old are you?
+                <input type="number" class="age" name="age" min="1" max="125">
+            </label>
+            <label> What subjects are you studying?
+                <input type="text" name="subjects">
+            </label>
+        </div>
+
+        <label> Question
+            <textarea name="question" rows="10"></textarea>
+            <div class="note">
+                (please make your question as specific as possible, we can't answer a broad question that starts with "tell me all you know about [blank]")
+            </div>
+        </label>
+
+        <button type="submit"> Submit</button>
+        </div>
     </div>
-
-    <div id="studentInfo" class="hide">
-      <label>How old are you?
-        <input type="number" class="age" name="age" min="1" max="125">
-      </label>
-
-      <label>What subjects are you studying?
-        <input type="text" name="subjects">
-      </label>
-    </div>
-
-    <label>Question
-      <textarea name="question" rows="10"></textarea>
-      <div class="note">(please make your question as specific as possible. We can't answer a question that starts with "tell me all you know about...!")</div>
-    </label>
-
-    <button type="submit">Submit</button>
-  </form>
 </div>
+</form>
+
 </section>
 
 <script>
-  function updateVisibility() {
-    const selected = document.querySelector('input[name="role"]:checked')?.value;
-    const schoolInfo = document.getElementById('schoolInfo');
-    const studentInfo = document.getElementById('studentInfo');
-    const otherInput = document.getElementById('otherInput');
+    function updateVisibility() {
+        const selected = document.querySelector('input[name="role"]:checked')?.value;
+        const teacherInfo = document.getElementById("teacherInfo");
+        const studentInfo = document.getElementById("studentInfo");
+        const otherInput = document.getElementById("otherInput");
 
-    if (selected === 'student') {
-      schoolInfo.classList.remove('hide');
-      studentInfo.classList.remove('hide');
-      otherInput.classList.add('hide');
-    } else if (selected === 'teacher') {
-      schoolInfo.classList.remove('hide');
-      studentInfo.classList.add('hide');
-      otherInput.classList.add('hide');
-    } else if (selected === 'other') {
-      schoolInfo.classList.add('hide');
-      studentInfo.classList.add('hide');
-      otherInput.classList.remove('hide');
-      otherInput.focus();
-    } else {
-      schoolInfo.classList.add('hide');
-      studentInfo.classList.add('hide');
-      otherInput.classList.add('hide');
+        if (selected === "student") {
+            studentInfo.classList.remove("hide")
+            teacherInfo.classList.add("hide");
+            otherInput.classList.add("hide")
+        } else if (selected === "teacher") {
+            studentInfo.classList.add("hide")
+            teacherInfo.classList.remove("hide");
+            otherInput.classList.add("hide")
+        }
     }
-  }
-</script>
 
-<script>
-document.getElementsByClassName('age')[0].oninput = function () {
+    document.getElementsByClassName('age')[0].oninput = function () {
         let max = parseInt(this.max);
         let min=parseInt(this.min);
         if (parseInt(this.value) > max) {
@@ -103,7 +248,5 @@ document.getElementsByClassName('age')[0].oninput = function () {
           this.value = min
         }
     }
-// https://codepen.io/Cb_Biggs/pen/LYJoQbM
 </script>
-
 {% endblock %}

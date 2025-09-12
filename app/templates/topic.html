@@ -1,42 +1,54 @@
 {% extends "layout.html" %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="/static/topicstyle.css">
-    <link rel="stylesheet" href="/static/style.css">
-</head>
+<style>
+/* === TOPICS === */
+#topic .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 
-<div class="date">
-    <p> Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }} </p>
-</div>
+#topic .date p {
+    margin: 0; 
+    color: var(--color-sub);
+    font-size: 0.85em;
+    text-align: right;
+}
 
-<section id="topic-intro">
-    <div class="content">
-        <h1>{{ topic.name.upper() }}</h1>
-        <p>{{ topic.introduction }}</p>
-    </div>
-</section>
+#topic .content {
+    background: var(--base-variant-1);
+    padding: 15px; 
+}
 
-<section id="topic-info">
-    <div class="content">
-    {% for article in articles %}
-        {% if article.template_type == 1 %}
-            {% include "topic templates/article_1.html" %}
-        {% elif article.template_type == 2 %}
-            {% include "topic templates/article_2.html" %}
-        {% elif article.template_type == 3 %}
-            {% include "topic templates/article_3.html" %}
-        {% endif %}
-    {% endfor %}
-    </div>
-</section>
+</style>
 
-<section id="topic-resources">
-    <div class="content"> 
-        <h2> {{ resource.name }} </h2>
-        <img src="{{ resource.image }}">
-        <p> Type: {{ resource.type }} </p>
-        <p> {{ resource.description }} </p>
-        <p> {{ resource.url }} </p>
+<section id="topic">
+    <div class="textbox">
+        <div class="heading">
+            <div class="what">
+                <h1> WHAT IS {{topic.name.upper()}}? </h1>
+            </div>
+            <div class="date">
+                <p> Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }} </p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="introduction">
+                <p> {{ topic.introduction }} </p>
+            </div>
+            <div id="article">
+                {{ articles.title }}
+                {{ articles.subheading }}
+                {{ articles.content }}
+            </div>
+            <div id="resource">
+                <h2> {{ resource.name }} </h2>
+                <img src="{{ resource.image }}">
+                <p> {{ resource.type }} </p>
+                <p> {{ resource.description }} </p>
+                <p> {{ resource.url }} </p>
+            </div>
+        </div>
     </div>
 </section>
 

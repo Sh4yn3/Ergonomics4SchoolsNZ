@@ -50,7 +50,6 @@ class Articles(db.Model):
     title = db.Column(db.Text())
     subheading = db.Column(db.Text())
     content = db.Column(db.Text())
-    template_type = db.Column(db.Integer())
     topic_for = db.Column(db.Text())
 
 

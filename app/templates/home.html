@@ -1,59 +1,307 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<section id="home-1">
-  <div class="content">
-    <h1 class="welcome">Welcome To...</h1>
-    <h1 class="title-card">Ergonomics4Schools</h1>
+<style>
+/* HOMEPAGE : SPLASH */
+#h-splash {
+    background-image: url("/static/bg/Home_1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    max-height: 800px;
+    overflow: hidden;
+}
 
-    <div class="home-container">
-      <div class="home-text">
-        <h2> Ever tried to eat soup with a fork?</h2>
-        <p> It's not easy, is it? Well, <a class="link" href="/learning-zone/topic/ergonomics"> ergonomics </a> is about changing all that!
-            We don't mean making it easy to eat soup with a fork, we mean giving you the right tools for the job.
-            Ergonomics is about making your life simpler and safer by taking account of human characteristics when
-            we design things. </p>
-        <p> This site aims to answer all those questions about ergonomics that you haven't even thought of yet ...</p>
-        <a class="default-button" href="/learning-zone"> Discover More </a>
-      </div>
+#h-splash h1 {
+    font-family: "Special Elite", system-ui;
+    font-size: 3em;
+    color: var(--color-h1);
+    padding: 180px 600px 0px 0px;
+}
 
-      <div class="home-image">
-        <img src="static/icon/Mascot1.png" alt="Mascot_Holding_Book" oncontextmenu="return false;" draggable="false">
-      </div>
+#h-splash p {
+    font-size: 1.50em;
+    color: var(--color-p);
+    padding: 10px 600px 0px 0px;
+}
+
+/* HOMEPAGE: CORE VALUES */
+
+#h-core {
+    background: var(--base-variant-1);
+    padding: 25px 0px;
+}
+
+#h-core h1 {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+#h-core .values {
+    display: flex;
+    justify-content: space-between; 
+    position: relative;
+    text-align: center;
+    align-items: center;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#h-core .value {
+    flex: 1;
+    min-width: 120px;
+    padding: 0 10px;
+    z-index: 20;
+}
+
+#h-core .value p {
+    margin-top: 8px;
+    line-height: 1.3em;
+    height: 2.6em;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-1);
+}
+
+#h-core .values::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    top: 33%;
+    background: var(--color-p);
+    z-index: 0;
+}
+
+#h-core .circle {
+    border-radius: 50%;
+    border: 4px solid var(--accent-1);
+    background-color: var(--base-color);
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#h-core img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* HOMEPAGE: DISCOVER */
+#h-discover {
+    background: var(--base-variant-2);
+    background: linear-gradient(0deg, var(--base-variant-2) 0%, var(--base-variant-2) 35%, var(--base-color) 35%);
+    padding: 0px 0px 60px 0px;
+}
+
+#h-discover .container {
+    padding: 60px 0px 90px 0px;
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+#h-discover .text {
+    margin: 30px 0px 0px 0px;
+    flex: 1;
+    min-width: 300px;
+}
+
+#h-discover .text h1 {
+    font-size: 2em;
+}
+
+#h-discover .text p {
+    font-size: 1.3em;
+    padding: 8px 0px;
+}
+
+#h-discover .button {
+    margin: 10px 0px 0px 0px;
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+#h-discover .mascot img {
+    max-width: 400px;
+}
+
+/* Discover Cards */
+#h-discover .cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    margin: 60px auto 0;
+    max-width: 100%;
+    flex-wrap: nowrap;
+}
+
+#h-discover .card {
+    flex: 1 1 280px;
+    max-width: 350px;
+    width: 100%;
+    background: var(--accent-5);
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    padding: 80px 20px 60px 20px;
+    text-align: center;
+    color: #E1DEDA;
+    box-shadow: 0 6px 16px #07143140;
+    transition: all 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#h-discover .card.b {
+    background: var(--accent-3);
+}
+
+#h-discover .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 22px #040d2140;
+}
+
+#h-discover .card img.circle {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 4px solid var(--accent-4);
+    width: 110px;
+    height: 110px;
+    background: #E1DEDA;
+    object-fit: contain;
+}
+
+#h-discover .card h2 {
+    font-size: 1.4em;
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+
+#h-discover .card p {
+    flex-grow: 1;
+    font-size: 1em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: var(--color-p);
+}
+
+#h-discover .card .button {
+    margin-top: auto;
+    align-self: center;
+    display: inline-block;
+    color: var(--color-p);
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease, transform 0.2s ease;
+}
+
+#h-discover .card .button:hover {
+    color: var(--highlight-1);
+    transform: scale(1.05);
+}
+
+/* MOBILE VERSION */
+@media (max-width: 768px) {
+
+}
+</style>
+
+<section id="h-splash">
+<div class="textbox">
+    <div class="text">
+        <h1> Welcome to Ergonomics4Schools </h1>
+        <p> The ultimate student resource for understanding and applying ergonomic principles to improve comfort and productivity </p>
     </div>
+</div>
+</section>
 
-  </div>
-</section >
+<section id="h-core">
+<div class="textbox">
+    <h1> CORE VALUES OF ERGONOMICS </h1>
+    <div class="values">
+        <div class="value">
+            <img class="circle" src="/static/assets/CoreValue_1.png" alt="Cost Savings" oncontextmenu="return false;" draggable="false">
+            <p> Promotes Health and Safety </p>
+        </div>
+        <div class="value">
+            <img class="circle" src="/static/assets/CoreValue_2.png" alt="Cost Savings" oncontextmenu="return false;" draggable="false">
+            <p> Increases Productivity </p>
+        </div>
+        <div class="value">
+            <img class="circle" src="/static/assets/CoreValue_3.png" alt="Cost Savings" oncontextmenu="return false;" draggable="false">
+            <p> Cost Savings </p>
+        </div>
+        <div class="value">
+            <img class="circle" src="/static/assets/CoreValue_4.png" alt="Cost Savings" oncontextmenu="return false;" draggable="false">
+            <p> Enhances User Engagement </p>
+        </div>
+        <div class="value">
+            <img class="circle" src="/static/assets/CoreValue_5.png" alt="Cost Savings" oncontextmenu="return false;" draggable="false">
+            <p> Improves Quality of Work </p>
+        </div>
+    </div> <!-- end of values -->
+</div>
+</section>
 
-<section id="home-2">
-  <div class="title-card"> 
-    <h1> Don't know where to start? </h1>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-1">
-        <h3> Explore your future! </h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet risus sit amet magna bibendum eleifend. </p>
-        <a class="blue-button" href="/career-advice"> Go To Careers </a>
-      </div>
-    </div> <!-- Card 1: Light Blue -->
-    
-    <div class="card">
-      <div class="card-2">
-        <h3> Lost? Ask Questions! </h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet risus sit amet magna bibendum eleifend. </p>
-        <a class="blue-button" href="/contact"> Go to Contacts </a>
-      </div>
-    </div> <!-- Card 2: White -->
-
-    <div class="card">
-      <div class="card-3">
-        <h3> Curious About Us? </h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet risus sit amet magna bibendum eleifend. </p>
-        <a class="blue-button" href="/about"> Go To About Us </a>
-      </div>
-    </div> <!-- Card 3: Darker Blue -->
-  </div> 
+<section id="h-discover">
+<div class="textbox">
+    <div class="container">
+        <div class="text">
+            <h1> Ever tried to eat soup with a fork?</h1>
+            <p> It's not easy, is it? Well, <a class="highlight" href="/learning-zone/topic/ergonomics"> ergonomics </a>
+                is about changing all that! We don't mean making it easy to eat soup with a fork, we mean giving you
+                the right tools for the job. Ergonomics is about making your life simpler and safer by taking account
+                of human characteristics when we design things. </p>
+            <p> This site aims to answer all those questions about ergonomics that you haven't even thought of yet ...</p>
+            <a class="button" href="/learning-zone"> Discover More </a>
+        </div>
+        <div class="mascot">
+            <img src="/static/assets/Mannequin_1.png" alt="Mannequin_Holding_Book" oncontextmenu="return false;" draggable="false">
+        </div>
+    </div> <!-- discover fork question -->
+    <div>
+        <div class="cards">
+            <div class="card">
+                <img class="circle" src="/static/assets/Mannequin_3.png" oncontextmenu="return false;" draggable="false">
+                <h2> Explore your Future! </h2>
+                <p> Head onto the career page to see what being an ergonomist entails and other jobs that can be found with ergonomics </p>
+                <a href="/career-advice" class="button">Go To Careers</a>
+            </div>
+            <div class="card" class="b">
+                <img class="circle" src="/static/assets/Mannequin_3.png" oncontextmenu="return false;" draggable="false">
+                <h2> Curious About Us? </h2>
+                <p> Check out who CIEHF and how they relate back to this website! As well as more contact information about us </p>
+                <a href="/career-advice" class="button">Go To About Us</a>
+            </div>
+            <div class="card">
+                <img class="circle" src="/static/assets/Mannequin_3.png" oncontextmenu="return false;" draggable="false">
+                <h2> Lost? Ask Questions! </h2>
+                <p> Whether it's about ergonomics or the website itself, ask us about your problems and any looming questions we haven't covered! </p>
+                <a href="/career-advice" class="button">Go To Contacts</a>
+            </div>
+        </div> <!-- cards -->
+    </div>
+</div>
 </section>
 
 {% endblock %}
