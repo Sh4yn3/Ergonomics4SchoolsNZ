@@ -48,12 +48,19 @@ def learningzone():
     topics = models.Topics.query.all()
     research = models.Research.query.all()
 
-    return render_template("learningzone.html", topics=topics, research=research)
+    return render_template("learningzone.html", topics=topics,
+                           research=research)
 
 
 @app.route("/learning-zone/topic/ergonomics")
 def ergonomics():
     return render_template("ergonomics.html")
+
+
+# DELETE LATER
+@app.route("/test")
+def test():
+    return render_template("test.html")
 
 
 # loads in information of the user's chosen topic
@@ -66,6 +73,7 @@ def topic(id):
 
     return render_template("topic.html", topic=topic, articles=articles,
                            photo=photo, resource=resource)
+
 
 # loads in information about the user's chosen research letter
 @app.route("/learning-zone/research/<int:id>")

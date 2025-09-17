@@ -15,6 +15,7 @@ html {
   /* Text */
   --color-h1: #E4E1DD;
   --color-p: #D5D2CE;
+  --color-tb: #faf8f2; /* tb = textbox */
   --color-sub: #b5b3af;
   --highlight-1: #4ab7c8;
   --highlight-2: #3d9ead;
@@ -22,14 +23,14 @@ html {
   /* Accents */
   --accent-1: #CA9745;
   --accent-2: #5DA0C0;
-  --accent-3: #4F8EAC;
-  --accent-4: #377A99;
-  --accent-5: #255B74;
+  --accent-3: #4985a1;
+  --accent-4: #1a475c;
+  --accent-5: #1a475c;
 }
 
-.light-mode {
+.lightmode {
   /* Background */
-  --nav-footer: #111C25;
+  --nav-footer: #c9c9c4;
   --base-color: #EAEAE8;
   --base-variant-1: #dfdfdb;
   --base-variant-2: #dededb;
@@ -37,6 +38,7 @@ html {
   /* Text */
   --color-h1: #19303f;
   --color-p: #264355;
+  --color-tb: #faf8f2; 
   --color-sub: #6b6a6c;
   --highlight-1: #4ab7c8;
   --highlight-2: #3d9ead;
@@ -44,9 +46,9 @@ html {
   /* Accents */
   --accent-1: #CA9745;
   --accent-2: #5DA0C0;
-  --accent-3: #4F8EAC;
-  --accent-4: #377A99;
-  --accent-5: #255B74;
+  --accent-3: #4985a1;
+  --accent-4: #1a475c;
+  --accent-5: #1a475c;
 }
 
 body {
@@ -65,6 +67,7 @@ p {
   font-style: normal;
   color: var(--color-p);
   margin: 0px;
+  font-size: 1em;
   line-height: 1.5;
 }
 
@@ -72,7 +75,7 @@ h1 {
   font-family: "Chelsea Market", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 28px;
+  font-size: 1.75em;
   color: var(--color-p);
   margin: 0px;
 }
@@ -99,6 +102,7 @@ h1 {
   font-size: 0.95em;
   text-decoration: none;
   display: inline-block;
+  transition: 0.3s ease, all 0.2s ease;
 }
 
 .button:hover {
@@ -106,7 +110,6 @@ h1 {
   border: 2px solid var(--highlight-1);
   font-weight: bold;
   color: var(--highlight-1);
-  transition: all 0.3s ease, all 0.2s ease;
 }
 
 .highlight {
@@ -184,7 +187,7 @@ nav .button, nav .icon {
   padding: 4px 8px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.95em;
+  font-size: 1em;
   text-decoration: none;
   transition: 0.2s ease;
   display: inline-block;

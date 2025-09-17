@@ -13,7 +13,7 @@
     </form>
 
     <div class="icon" id="search-toggle"><i class="fi fi-br-search"></i></div>
-    <div class="icon" id="dl-mode"><i class="fi fi-br-moon"></i></div>
+    <div class="icon" id="theme-switch"><i class="fi fi-br-moon"></i></div>
   </div>
 </div>
 </nav>
@@ -60,6 +60,35 @@
       searchInput.focus();
     } else {
       searchToggle.innerHTML = '<i class="fi fi-br-search"></i>';
+    }
+  });
+</script>
+
+<!-- Dark and Light Mode -->
+<script>
+  const themeSwitch = document.getElementById("theme-switch");
+  const body = document.body;
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    body.classList.add("lightmode");
+    themeSwitch.innerHTML = '<i class="fi fi-br-sun"></i>';
+  } else {
+    body.classList.remove("lightmode");
+    themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
+  }
+
+  // Toggle theme
+  themeSwitch.addEventListener("click", () => {
+    if (body.classList.contains("lightmode")) {
+      body.classList.remove("lightmode");
+      localStorage.setItem("theme", "dark");
+      themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
+    } else {
+      body.classList.add("lightmode");
+      localStorage.setItem("theme", "light");
+      themeSwitch.innerHTML = '<i class="fi fi-br-sun"></i>';
     }
   });
 </script>
