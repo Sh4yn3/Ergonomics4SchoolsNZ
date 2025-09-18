@@ -45,10 +45,10 @@ def add():
 # list of options that leads to a (research) topic
 @app.route("/learning-zone")
 def learningzone():
-    topics = models.Topics.query.all()
+    topic = models.Topics.query.all()
     research = models.Research.query.all()
 
-    return render_template("learningzone.html", topics=topics,
+    return render_template("learningzone.html", topic=topic,
                            research=research)
 
 

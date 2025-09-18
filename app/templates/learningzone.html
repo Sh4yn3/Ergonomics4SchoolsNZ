@@ -5,7 +5,7 @@
 #learningzone {
   margin-top: 90px;
   font-family: Arial, sans-serif;
-  color: #E1DEDA;
+  color: var(--color-p);
 }
 
 #learningzone .intro {
@@ -19,7 +19,7 @@
 #learningzone .welcome {
   flex: 4;
   padding: 5px;
-  border: 2px solid var(--accent-3);
+  border: 2px solid var(--accent-2);
   border-radius: 8px;
   text-align: center;
 }
@@ -28,7 +28,7 @@
   margin: 0;
   border-radius: 5px 5px 0px 0px;
   color: var(--color-tb);
-  background: var(--accent-3);
+  background: var(--accent-2);
   padding: 10px;
 }
 
@@ -46,7 +46,7 @@
 }
 
 #learningzone .ergo-box {
-  border: 2px solid var(--accent-3);
+  border: 2px solid var(--accent-2);
   border-radius: 8px;
   padding: 5px;
 }
@@ -59,8 +59,9 @@
   padding: 10px;
   font-size: 1.1em;
   color: var(--color-tb);
-  border-radius: 5px 5px 0px 0px;
-  background: var(--accent-3);
+  border-radius: 5px;
+  background: var(--accent-2);
+  transition: all 1s ease;
 }
 
 #learningzone .ergonomics h1:hover {
@@ -76,14 +77,14 @@
 /* LEARNING ZONE: Expand/Collapse Section */
 #learningzone .lz-toggle-all {
   margin-top: 20px;
-  border-bottom: 3px solid var(--accent-3);
+  border-bottom: 3px solid var(--accent-2);
   display: flex;
 }
 
 /* Arrow box */
 #learningzone #toggle-all .arrow {
   border-radius: 8px 0px 0px 0px;
-  background: var(--accent-3);
+  background: var(--accent-2);
   padding: 12px;
   font-size: 1.2em;
   display: flex;
@@ -107,7 +108,7 @@
 
 #learningzone #toggle-all .label {
   border-radius: 0px 8px 0px 0px;
-  background: var(--accent-3);
+  background: var(--accent-2);
   text-align: left;
   border-left: 2px solid #0e1c26;
   font-size: 1.2em;
@@ -117,6 +118,71 @@
 #learningzone #toggle-all:hover .arrow,
 #learningzone #toggle-all:hover .label {
   background: var(--accent-4);
+}
+
+/* LEARNING ZONE: Topics */
+#lz-topics {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+#lz-topics .lz-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #0e1c26; /* dark outline */
+  background: #3b7a96; /* blue background */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#lz-topics .lz-head {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#lz-topics .lz-toggle {
+  background: #2d5c70; /* darker left part */
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 1em;
+  min-width: 40px;
+  text-align: center;
+}
+
+#lz-topics .lz-name {
+  flex: 1;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#lz-topics .lz-name:hover {
+  background: #2e6a84;
+}
+
+#lz-topics .lz-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  display: none; /* hidden until toggled open */
+  background: #264653;
+  color: #E1DEDA;
+  padding: 12px;
+  border-top: 1px solid #0e1c26;
+  grid-column: span 2;
+}
+
+#lz-topics .lz-body.open {
+  max-height: 500px; /* adjust depending on content */
 }
 
 </style>
@@ -134,9 +200,7 @@
       </div>
       <div class="ergonomics">
         <div class="ergo-box">
-          <a href="/learning-zone/topic/ergonomics">
-            <h1> What is Ergonomics? </h1>
-          </a>
+          <a href="/learning-zone/topic/ergonomics"><h1> What is Ergonomics? </h1></a>
         </div>
         <img src="/static/assets/Mannequin_2.png">
       </div>
@@ -155,6 +219,7 @@
     <h1> List of Topics </h1>
   </div>
 
+  {% for topic in topic %}
   <div class="lz-box">
     <div class="lz-head">
       <button type="button" class="lz-toggle"> &gt; </button>
@@ -165,6 +230,7 @@
       <p> Keywords: {{ topic.keywords }} </p>
     </div>
   </div>
+  {% endfor %}
 
 </section>
 
@@ -173,5 +239,23 @@
     <h1> Research Reports </h1>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggles = document.querySelectorAll(".lz-toggle");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", function () {
+      const box = this.closest(".lz-box");
+      const body = box.querySelector(".lz-body");
+
+      body.classList.toggle("open");
+
+      // change arrow icon
+      this.textContent = body.classList.contains("open") ? "v" : ">";
+    });
+  });
+});
+</script>
 
 {% endblock %}

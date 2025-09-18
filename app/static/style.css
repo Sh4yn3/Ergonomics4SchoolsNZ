@@ -23,32 +23,32 @@ html {
   /* Accents */
   --accent-1: #CA9745;
   --accent-2: #5DA0C0;
-  --accent-3: #4985a1;
-  --accent-4: #1a475c;
+  --accent-3: #3e7893;
+  --accent-4: #21566f;
   --accent-5: #1a475c;
 }
 
 .lightmode {
   /* Background */
-  --nav-footer: #c9c9c4;
-  --base-color: #EAEAE8;
-  --base-variant-1: #dfdfdb;
-  --base-variant-2: #dededb;
+  --nav-footer: #C6D7DE;
+  --base-color: #E6E9EB;
+  --base-variant-1: #B9CED8;
+  --base-variant-2: #D1DFE5;
 
   /* Text */
   --color-h1: #19303f;
   --color-p: #264355;
   --color-tb: #faf8f2; 
   --color-sub: #6b6a6c;
-  --highlight-1: #4ab7c8;
-  --highlight-2: #3d9ead;
+  --highlight-1: #1d6687;
+  --highlight-2: #2a85b0;
 
   /* Accents */
-  --accent-1: #CA9745;
+  --accent-1: #25333C;
   --accent-2: #5DA0C0;
-  --accent-3: #4985a1;
-  --accent-4: #1a475c;
-  --accent-5: #1a475c;
+  --accent-3: #BED9E6;
+  --accent-4: #a9c9d6;
+  --accent-5: #92B8C9;
 }
 
 body {
@@ -94,7 +94,7 @@ h1 {
 .button {
   border: 2px solid var(--color-p);
   background: none;
-  color: #e0dcd6;
+  color: var(--color-p);
   font-weight: bold;
   padding: 8px 12px;
   border-radius: 6px;
@@ -142,6 +142,7 @@ nav {
   width: 100%;
   top: 0;
   transition: all ease 0.3s;
+  box-shadow: 0 2px 5px #07143140;
 }
 
 nav .content {
@@ -172,7 +173,6 @@ nav .right a {
   color: var(--color-p);
   font-weight: bold;
   font-size: 1em;
-  transition: color 0.2s ease;
 }
 
 nav .right a:hover {
@@ -189,7 +189,6 @@ nav .button, nav .icon {
   cursor: pointer;
   font-size: 1em;
   text-decoration: none;
-  transition: 0.2s ease;
   display: inline-block;
 }
 
@@ -222,12 +221,17 @@ nav .button:hover, nav .icon:hover {
   display: inline-block;
 }
 
+img.shadow {
+  filter: drop-shadow(1px 2px 3px #07143140);
+}
+
 /* Desktop Collapse Toggle */
+
 .desktop-toggle {
   display: block;
   outline: none;
   position: fixed;
-  right: 95px;
+  right: 90px;
   z-index: 150;
   top: -60px;
   background: none;
@@ -236,6 +240,7 @@ nav .button:hover, nav .icon:hover {
   padding: 0px;
   margin-top: 1.5px;
   transition: all 0.3s ease;
+  box-sizing: 0 2px 5px #07143140;;
 }
 
 .desktop-toggle img {
