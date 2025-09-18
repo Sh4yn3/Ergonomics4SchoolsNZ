@@ -21,6 +21,7 @@ class Topics(db.Model):
     name = db.Column(db.Text())
     slug = db.Column(db.Text())
     image = db.Column(db.Text())
+    heading = db.Column(db.Text())
     introduction = db.Column(db.Text())
     created_on = db.Column(db.Text())
     last_updated_on = db.Column(db.Text())

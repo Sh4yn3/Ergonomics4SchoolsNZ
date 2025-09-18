@@ -2,7 +2,12 @@
 {% block content %}
 <style>
 /* === TOPICS === */
-#topic .heading {
+
+#topic body {
+    background: url("/static/bg/Topics_Default.jpg");
+}
+
+#topic .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -25,7 +30,7 @@
 
 <section id="topic">
     <div class="textbox">
-        <div class="heading">
+        <div class="header">
             <div class="what">
                 <h1> {{topic.name.upper()}} </h1>
             </div>
@@ -35,7 +40,7 @@
         </div>
         <div class="content">
             <div class="introduction">
-                <h2> What is it? </h2>
+                <h2> {{ topic.heading }} </h2>
                 <p> {{ topic.introduction }} </p>
             </div>
             <div id="article">

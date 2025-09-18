@@ -9,7 +9,8 @@
     <a href="/contact" class="button">Contact Us</a>
 
     <form action="/search" method="get">
-      <input type="text" id="search-input" placeholder="Search..." maxlength="300"/>
+      <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="300">
+      <button type="submit" onclick="limitFunction()"><i class="fi fi-br-search"></i></button>
     </form>
 
     <div class="icon" id="search-toggle"><i class="fi fi-br-search"></i></div>

@@ -15,7 +15,7 @@
   gap: 15px;
 }
 
-/* LEARNING ZONE: Welcome Box */
+/* LEARNING ZONE: WELCOME */
 #learningzone .welcome {
   flex: 4;
   padding: 5px;
@@ -38,7 +38,7 @@
   padding: 12px;
 }
 
-/* LEARNING ZONE: Ergonomics */
+/* LEARNING ZONE: ERGONOMICS  */
 #learningzone .ergonomics {
   flex: 1;
   text-align: center;
@@ -74,14 +74,13 @@
   height: auto;
 }
 
-/* LEARNING ZONE: Expand/Collapse Section */
+/* LEARNING ZONE: TOGGLE ALL */
 #learningzone .lz-toggle-all {
   margin-top: 20px;
   border-bottom: 3px solid var(--accent-2);
   display: flex;
 }
 
-/* Arrow box */
 #learningzone #toggle-all .arrow {
   border-radius: 8px 0px 0px 0px;
   background: var(--accent-2);
@@ -120,69 +119,92 @@
   background: var(--accent-4);
 }
 
-/* LEARNING ZONE: Topics */
-#lz-topics {
-  margin-top: 20px;
+/* LEARNING ZONE: TOPIC & RESEARCH HEADINGS */
+
+.lz-header {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
+/* LEARNING ZONE: OPTIONS */
+
+.lz-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 15px;
 }
 
-#lz-topics .lz-box {
+.lz-box {
+  flex: 1 1 calc(33.333% - 15px);
+  min-width: 260px;
   display: flex;
-  align-items: center;
-  border: 1px solid #0e1c26; /* dark outline */
-  background: #3b7a96; /* blue background */
-  border-radius: 4px;
+  flex-direction: column;
+  border-radius: 6px;
   overflow: hidden;
 }
 
-#lz-topics .lz-head {
+.lz-head {
   display: flex;
   align-items: center;
-  width: 100%;
+  background: var(--accent-2);
 }
 
-#lz-topics .lz-toggle {
-  background: #2d5c70; /* darker left part */
+.lz-toggle {
+  background: var(--highlight-2);
   border: none;
   color: #fff;
   font-weight: bold;
-  padding: 10px 12px;
+  padding: 10px 14px;
   cursor: pointer;
   font-size: 1em;
-  min-width: 40px;
+  min-width: 45px;
   text-align: center;
 }
 
-#lz-topics .lz-name {
+.lz-name {
   flex: 1;
-  padding: 10px 12px;
+  padding: 10px 14px;
   text-decoration: none;
-  color: #fff;
+  color: var(--color-p);
   font-weight: bold;
   display: flex;
   align-items: center;
+  background: var(--accent-2);
+  transition: all 0.3s ease;
+
+  /* New overflow controls */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#lz-topics .lz-name:hover {
-  background: #2e6a84;
+.lz-name:hover {
+  background: var(--accent-3);
 }
 
-#lz-topics .lz-body {
+.lz-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  display: none; /* hidden until toggled open */
-  background: #264653;
-  color: #E1DEDA;
-  padding: 12px;
-  border-top: 1px solid #0e1c26;
-  grid-column: span 2;
+  background: var(--accent-5);
+  color: var(--color-p);
+  padding: 0 12px;
+  border-top: 1px solid var(--accent-5);
+  transition: 0.4s ease, padding 0.3s ease;
 }
 
-#lz-topics .lz-body.open {
-  max-height: 500px; /* adjust depending on content */
+.lz-body.active {
+  display: block;
+  min-height: 200px; 
+  max-height: 200px; 
+  padding: 12px;
+  overflow-y: auto;
+}
+
+/* If only one box, make it take the full row */
+.lz-container:only-child,
+.lz-container > .lz-box:only-child {
+  grid-column: 1 / -1;
 }
 
 </style>
@@ -219,43 +241,80 @@
     <h1> List of Topics </h1>
   </div>
 
-  {% for topic in topic %}
-  <div class="lz-box">
-    <div class="lz-head">
-      <button type="button" class="lz-toggle"> &gt; </button>
-      <a href="/learning-zone/topic/{{ topic.id }}" class="lz-name"> {{ topic.name }} </a>
+  <div class="lz-container">
+    {% for topic in topic %}
+    <div class="lz-box">
+      <div class="lz-head">
+        <button type="button" class="lz-toggle"> &gt; </button>
+        <a href="/learning-zone/topic/{{ topic.id }}" class="lz-name"> {{ topic.name }} </a>
+      </div>
+      <div class="lz-body">
+        <p> Keywords: {{ topic.keywords }} </p>
+        <p> {{ topic.summary or "This page is under construction!" }} </p>
+      </div>
     </div>
-    <div class="lz-body">
-      <p> {{ topic.summary or "This page is under construction!" }} </p>
-      <p> Keywords: {{ topic.keywords }} </p>
-    </div>
-  </div>
   {% endfor %}
-
+  </div>
+  
 </section>
 
 <section id="lz-research" class="textbox">
   <div class="lz-header">
     <h1> Research Reports </h1>
   </div>
+  
+  <div class="lz-container">
+    {% for research in research %}
+    <div class="lz-box">
+      <div class="lz-head">
+        <button type="button" class="lz-toggle"> &gt; </button>
+        <a href="/learning-zone/research/{{ research.id }}" class="lz-name"> {{ research.name }} </a>
+      </div>
+      <div class="lz-body">
+        <p> Keywords: {{ topic.keywords }} </p>
+        <p> {{ research.introduction or "This page is under construction!" }} </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
 </section>
 
+<!-- Collapse / Expand Toggles -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
   const toggles = document.querySelectorAll(".lz-toggle");
+  const toggleAllBtn = document.getElementById("toggle-all");
+  let allExpanded = false;
 
+  // Individual toggle
   toggles.forEach(toggle => {
     toggle.addEventListener("click", function () {
-      const box = this.closest(".lz-box");
-      const body = box.querySelector(".lz-body");
-
-      body.classList.toggle("open");
-
-      // change arrow icon
-      this.textContent = body.classList.contains("open") ? "v" : ">";
+      const summary = this.parentElement.nextElementSibling;
+      summary.classList.toggle("active");
+      this.textContent = summary.classList.contains("active") ? " v " : " > ";
     });
   });
-});
+
+  // Expand/Collapse All
+  toggleAllBtn.addEventListener("click", function () {
+    allExpanded = !allExpanded;
+    const bodies = document.querySelectorAll(".lz-body");
+    const arrows = document.querySelectorAll(".lz-toggle");
+
+    bodies.forEach(body => {
+      body.classList.toggle("active", allExpanded);
+      body.style.maxHeight = allExpanded ? "300px" : "0";
+      body.style.padding = allExpanded ? "12px" : "0 12px";
+    });
+
+    arrows.forEach(arrow => {
+      arrow.textContent = allExpanded ? " v " : " > ";
+    });
+
+    this.querySelector(".label").textContent = allExpanded ? "Collapse All" : "Expand All";
+    this.querySelector(".arrow").textContent = allExpanded ? " v " : " > ";
+  });
 </script>
+
 
 {% endblock %}

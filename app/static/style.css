@@ -11,18 +11,19 @@ html {
   --base-color: #152A3B;
   --base-variant-1: #112332;
   --base-variant-2: #1C3243;
+  --base-variant-3: #010c15;
 
   /* Text */
   --color-h1: #E4E1DD;
   --color-p: #D5D2CE;
   --color-tb: #faf8f2; /* tb = textbox */
-  --color-sub: #b5b3af;
+  --color-sub: #a7a4a2ff;
   --highlight-1: #4ab7c8;
   --highlight-2: #3d9ead;
 
   /* Accents */
   --accent-1: #CA9745;
-  --accent-2: #5DA0C0;
+  --accent-2: #376b84ff;
   --accent-3: #3e7893;
   --accent-4: #21566f;
   --accent-5: #1a475c;
@@ -34,12 +35,13 @@ html {
   --base-color: #E6E9EB;
   --base-variant-1: #B9CED8;
   --base-variant-2: #D1DFE5;
+  --base-variant-3: #c1ccd1;
 
   /* Text */
   --color-h1: #19303f;
   --color-p: #264355;
   --color-tb: #faf8f2; 
-  --color-sub: #6b6a6c;
+  --color-sub: #757477ff;
   --highlight-1: #1d6687;
   --highlight-2: #2a85b0;
 
@@ -197,7 +199,7 @@ nav .button:hover, nav .icon:hover {
   color: var(--highlight-1);
 }
 
-/* Search input */
+/* NAVBAR: SEARCH-INPUT */
 #search-input {
   display: none;
   border: 3px solid ;
@@ -225,7 +227,7 @@ img.shadow {
   filter: drop-shadow(1px 2px 3px #07143140);
 }
 
-/* Desktop Collapse Toggle */
+/* NAVBAR: TOGGLES */
 
 .desktop-toggle {
   display: block;
@@ -279,7 +281,7 @@ nav.hidden {
   top: -120px;
 }
 
-/* Mobile Hamburger */
+/* MOBILE HAMBURGER */
 @media (max-width: 873px) {
   .desktop-toggle {
     display: none;
@@ -355,4 +357,26 @@ nav.hidden {
   nav .right form {
     width: 100%;
   }
+}
+
+
+/* === 404 ERROR === */
+#error {
+    margin-top: 150px;
+    align-items: center;
+    text-align: center;
+}
+
+#error img {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+#error .button {
+    margin: 0px 5px;
+}
+
+#error p, #error h1 {
+    margin: 10px auto 15px auto; 
 }

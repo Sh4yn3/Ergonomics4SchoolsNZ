@@ -88,10 +88,17 @@ def research(id):
 # search route and function
 @app.route("/search")
 def search():
+    # Get the "q" parameter from the URL (e.g. /search?q=chair)
+    # If q is missing, use an empty string instead
+    # .strip() removes extra spaces at start or end
     query = request.args.get("q", "").strip()
 
+    # If the query is empty (user searched nothing),
+    # just show the search page with no results
     if not query:
         return render_template("search.html", query=query, topics=[])
+
+    # otherwise, searched the database with the specified text
     results = models.Topics.query.filter(or_(
         models.Topics.name.ilike(f"%{query}%"),
         models.Topics.keywords.like(f"%{query}%"),
