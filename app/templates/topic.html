@@ -41,15 +41,15 @@
 
         <div class="content">
             <div class="introduction">
-                <h2>{{ topic.heading }}</h2>
-                <p>{{ topic.introduction }}</p>
+                <h2>{{ topic.heading | safe }}</h2>
+                <p>{{ topic.introduction | safe }}</p>
             </div>
 
             <div id="article">
                 {% for article in articles %}
                     <h2>{{ article.title }}</h2>
-                    <h3>{{ article.subheading }}</h3>
-                    <p>{{ article.content }}</p>
+                    <h3>{{ article.subheading | safe }}</h3>
+                    <p>{{ article.content | safe }}</p>
                 {% endfor %}
             </div>
 

@@ -142,9 +142,9 @@ h1 {
 
 /* === 404 ERROR === */
 #error {
-    margin-top: 150px;
-    align-items: center;
-    text-align: center;
+  margin-top: 150px;
+  align-items: center;
+  text-align: center;
 }
 
 #error img {
@@ -158,5 +158,27 @@ h1 {
 }
 
 #error p, #error h1 {
+    margin: 10px auto 15px auto; 
+}
+
+/* ERROR: Under Construction */
+
+#uc-error {
+  margin-top: 50px;
+  align-items: center;
+  text-align: center;
+}
+
+#uc-error img {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+#uc-error .button {
+    margin: 0px 5px;
+}
+
+#uc-error p, #error h1 {
     margin: 10px auto 15px auto; 
 }

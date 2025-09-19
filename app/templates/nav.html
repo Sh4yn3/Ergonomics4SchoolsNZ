@@ -83,14 +83,23 @@ nav .search-input {
 }
 
 nav #search-btn {
-  border: none;
+  border: 3px solid var(--color-p);
   background: none;
-  cursor: pointer;
   color: var(--color-p);
-  font-size: 1.2em;
-  padding: 0;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
   display: flex;
   align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#search-btn:hover {
+  border-color: var(--highlight-1);
+  color: var(--highlight-1);
 }
 
 #search-btn i {
@@ -178,11 +187,9 @@ nav.hidden {
       <!-- SEARCH FORM -->
       <form action="/search" method="get" id="search-form">
         <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="300">
-        <div class="icon">
-          <button type="submit" id="search-btn" onclick="limitFunction()">
-            <i class="fi fi-br-search"></i>
-          </button>
-        </div>
+        <button type="submit" id="search-btn" onclick="limitFunction()">
+          <i class="fi fi-br-search"></i>
+        </button>
       </form>
 
       <!-- THEME SWITCH (becomes exit when searching) -->
