@@ -5,7 +5,7 @@
 #learningzone {
   margin-top: 90px;
   font-family: Arial, sans-serif;
-  color: var(--color-p);
+  color: var(--color-h1);
 }
 
 #learningzone .intro {
@@ -27,7 +27,7 @@
 #learningzone .welcome h1 {
   margin: 0;
   border-radius: 5px 5px 0px 0px;
-  color: var(--color-tb);
+  color: var(--color-h1);
   background: var(--accent-2);
   padding: 10px;
 }
@@ -58,10 +58,10 @@
 #learningzone .ergonomics h1 {
   padding: 10px;
   font-size: 1.1em;
-  color: var(--color-tb);
+  color: var(--color-h1);
   border-radius: 5px;
   background: var(--accent-2);
-  transition: all 1s ease;
+  transition: all 0.3s ease;
 }
 
 #learningzone .ergonomics h1:hover {
@@ -94,13 +94,13 @@
 }
 
 #learningzone #toggle-all {
-  color: var(--color-tb);
+  color: var(--color-p);
   display: flex;
   align-items: center;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  color: #E1DEDA;
+  color: var(--color-h1);
   background: none;
   padding: 0;
 }
@@ -109,14 +109,15 @@
   border-radius: 0px 8px 0px 0px;
   background: var(--accent-2);
   text-align: left;
-  border-left: 2px solid #0e1c26;
+  border-left: 2px solid var(--base-color);
   font-size: 1.2em;
   padding: 12px 40px;
+  transition: all 0.3s ease;
 }
 
 #learningzone #toggle-all:hover .arrow,
 #learningzone #toggle-all:hover .label {
-  background: var(--accent-4);
+  background: var(--highlight-2);
 }
 
 /* LEARNING ZONE: TOPIC & RESEARCH HEADINGS */
@@ -153,7 +154,7 @@
 .lz-toggle {
   background: var(--highlight-2);
   border: none;
-  color: #fff;
+  color: var(--color-p);
   font-weight: bold;
   padding: 10px 14px;
   cursor: pointer;
@@ -180,7 +181,7 @@
 }
 
 .lz-name:hover {
-  background: var(--accent-3);
+  background: var(--accent-5);
 }
 
 .lz-body {
@@ -271,7 +272,7 @@
         <a href="/learning-zone/research/{{ research.id }}" class="lz-name"> {{ research.name }} </a>
       </div>
       <div class="lz-body">
-        <p> Keywords: {{ topic.keywords }} </p>
+        <p> Author/s: {{ research.authors }} </p>
         <p> {{ research.introduction or "This page is under construction!" }} </p>
       </div>
     </div>
@@ -281,6 +282,7 @@
 </section>
 
 <!-- Collapse / Expand Toggles -->
+<!-- Based on W3Schools -->
 <script>
   const toggles = document.querySelectorAll(".lz-toggle");
   const toggleAllBtn = document.getElementById("toggle-all");
@@ -302,9 +304,11 @@
     const arrows = document.querySelectorAll(".lz-toggle");
 
     bodies.forEach(body => {
-      body.classList.toggle("active", allExpanded);
-      body.style.maxHeight = allExpanded ? "300px" : "0";
-      body.style.padding = allExpanded ? "12px" : "0 12px";
+      if (allExpanded) {
+        body.classList.add("active");
+      } else {
+        body.classList.remove("active");
+      }
     });
 
     arrows.forEach(arrow => {
@@ -314,6 +318,7 @@
     this.querySelector(".label").textContent = allExpanded ? "Collapse All" : "Expand All";
     this.querySelector(".arrow").textContent = allExpanded ? " v " : " > ";
   });
+  
 </script>
 
 

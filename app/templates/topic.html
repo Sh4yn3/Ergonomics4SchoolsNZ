@@ -32,31 +32,39 @@
     <div class="textbox">
         <div class="header">
             <div class="what">
-                <h1> {{topic.name.upper()}} </h1>
+                <h1>{{ topic.name.upper() }}</h1>
             </div>
             <div class="date">
-                <p> Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }} </p>
+                <p>Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }}</p>
             </div>
         </div>
+
         <div class="content">
             <div class="introduction">
-                <h2> {{ topic.heading }} </h2>
-                <p> {{ topic.introduction }} </p>
+                <h2>{{ topic.heading }}</h2>
+                <p>{{ topic.introduction }}</p>
             </div>
+
             <div id="article">
-                {{ articles.title }}
-                {{ articles.subheading }}
-                {{ articles.content }}
+                {% for article in articles %}
+                    <h2>{{ article.title }}</h2>
+                    <h3>{{ article.subheading }}</h3>
+                    <p>{{ article.content }}</p>
+                {% endfor %}
             </div>
+
             <div id="resource">
-                <h2> {{ resource.name }} </h2>
-                <img src="{{ resource.image }}">
-                <p> {{ resource.type }} </p>
-                <p> {{ resource.description }} </p>
-                <p> {{ resource.url }} </p>
+                {% for resources in resources %}
+                    <h2>{{ resources.name }}</h2>
+                    <img src="{{ res.image }}">
+                    <p>{{ resources.type }}</p>
+                    <p>{{ resources.description }}</p>
+                    <a href="{{ res.url }}">{{ resources.url }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
+
 
 {% endblock %}

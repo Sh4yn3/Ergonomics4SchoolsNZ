@@ -1,23 +1,196 @@
+<style>
+nav {
+  background-color: var(--nav-footer);
+  color: var(--color-p);
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: all ease 0.3s;
+  box-shadow: 0 2px 5px #07143140;
+}
+
+nav .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 12px 20px; 
+}
+
+nav .logo {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--color-h1);
+  text-decoration: none;
+}
+
+nav .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav .right a {
+  text-decoration: none;
+  color: var(--color-p);
+  font-weight: bold;
+  font-size: 1em;
+}
+
+nav .right a:hover {
+  color: var(--highlight-1);
+}
+
+nav .button, nav .icon {
+  border: 3px solid var(--color-p);
+  background: none;
+  color: var(--color-p);
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav .button:hover, nav .icon:hover {
+  border: 3px solid var(--highlight-1);
+  color: var(--highlight-1);
+}
+
+/* NAVBAR: SEARCH-INPUT */
+#search-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+}
+
+nav .search-input {
+  display: none;
+  border: 3px solid var(--color-p);
+  border-radius: 6px;
+  background: none;
+  color: var(--color-p);
+  font-size: 1em;
+  padding: 4px 10px;
+  width: 420px;
+  transition: all 0.3s ease;
+}
+
+nav #search-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-p);
+  font-size: 1.2em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+#search-btn i {
+  pointer-events: none;
+}
+
+nav .search-input::placeholder {
+  color: var(--color-sub);
+}
+
+#navbar-right.search-active a,
+#navbar-right.search-active .button {
+  display: none;
+}
+
+#navbar-right.search-active .search-input {
+  display: inline-block;
+}
+
+/* NAVBAR: TOGGLES */
+
+.desktop-toggle {
+  display: block;
+  outline: none;
+  position: fixed;
+  right: 90px;
+  z-index: 150;
+  top: -60px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  margin-top: 1.5px;
+  transition: all 0.3s ease;
+  box-sizing: 0 2px 5px #07143140;;
+}
+
+.desktop-toggle img {
+  width: 80px;
+  display: block;
+}
+
+.desktop-toggle:hover {
+  transform: scaleY(1.1);
+}
+
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  right: 15px;
+  top: -85px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: top 0.3s ease;
+}
+
+.mobile-toggle img {
+  width: 60px;
+  display: block;
+}
+
+.mobile-toggle:active {
+  top: 0px;
+}
+
+nav.hidden {
+  transform: translateY(-90%);
+}
+.desktop-toggle.hidden {
+  top: -120px;
+}
+</style>
+
 <nav>
-<div class="content">
-  <a href="/" class="logo">Ergonomics4SchoolsNZ</a>
-  <div class="right" id="navbar-right">
-    <a href="/">Home</a>
-    <a href="/learning-zone">Topic List</a>
-    <a href="/career-advice">Career Advice</a>
-    <a href="/about">About Us</a>
-    <a href="/contact" class="button">Contact Us</a>
+  <div class="content">
+    <a href="/" class="logo">Ergonomics4SchoolsNZ</a>
+    <div class="right" id="navbar-right">
+      <a href="/">Home</a>
+      <a href="/learning-zone">Topic List</a>
+      <a href="/career-advice">Career Advice</a>
+      <a href="/about">About Us</a>
+      <a href="/contact" class="button">Contact Us</a>
 
-    <form action="/search" method="get">
-      <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="300">
-      <button type="submit" onclick="limitFunction()"><i class="fi fi-br-search"></i></button>
-    </form>
+      <!-- SEARCH FORM -->
+      <form action="/search" method="get" id="search-form">
+        <input type="text" name="q" placeholder="Search..." class="search-input" maxlength="300">
+        <div class="icon">
+          <button type="submit" id="search-btn" onclick="limitFunction()">
+            <i class="fi fi-br-search"></i>
+          </button>
+        </div>
+      </form>
 
-    <div class="icon" id="search-toggle"><i class="fi fi-br-search"></i></div>
-    <div class="icon" id="theme-switch"><i class="fi fi-br-moon"></i></div>
+      <!-- THEME SWITCH (becomes exit when searching) -->
+      <div class="icon" id="theme-switch"><i class="fi fi-br-moon"></i></div>
+    </div>
   </div>
-</div>
 </nav>
+
 
 <!-- Desktop Collapse Toggle -->
 <button class="desktop-toggle">
@@ -29,10 +202,9 @@
   <img class="shadow" src="/static/assets/collapse.svg" oncontextmenu="return false;" draggable="false">
 </button>
 
-
+<!-- Nav Toggle based on w3schools -->
 <script>
-  // Toggles based on w3schools
-  // Desktop collapse toggle
+  // Desktop Version
   const collapse = document.querySelector(".desktop-toggle");
   const nav = document.querySelector("nav");
   collapse.addEventListener("click", () => {
@@ -40,57 +212,65 @@
     collapse.classList.toggle("hidden");
   });
 
-  // Mobile menu toggle
+  // Mobile Version
   const menuToggle = document.getElementById("mobile-toggle");
-  const navbarRight = document.getElementById("navbar-right");
-  menuToggle.addEventListener("click", () => {
-    navbarRight.classList.toggle("active");
-  });
+  const navRight = document.getElementById("navbar-right")
+  menuToggle.addEventListener("click",()=>{
+    navRight.classList.toggle("active");
+  })
 
-  // Search toggle
-  const searchToggle = document.getElementById("search-toggle");
-  const searchInput = document.getElementById("search-input");
-  let searching = false;
-
-  searchToggle.addEventListener("click", () => {
-    searching = !searching;
-    navbarRight.classList.toggle("search-active", searching);
-
-    if (searching) {
-      searchToggle.innerHTML = '<i class="fi fi-br-cross"></i>';
-      searchInput.focus();
-    } else {
-      searchToggle.innerHTML = '<i class="fi fi-br-search"></i>';
-    }
-  });
 </script>
 
-<!-- Dark and Light Mode -->
 <script>
-  const themeSwitch = document.getElementById("theme-switch");
-  const body = document.body;
+const navbarRight = document.getElementById("navbar-right");
+const searchForm = document.getElementById("search-form");
+const searchInput = searchForm.querySelector(".search-input");
+const searchBtn = document.getElementById("search-btn");
+const themeSwitch = document.getElementById("theme-switch");
+let searching = false;
 
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    body.classList.add("lightmode");
-    themeSwitch.innerHTML = '<i class="fi fi-br-sun"></i>';
-  } else {
-    body.classList.remove("lightmode");
-    themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
+// Search button click
+searchBtn.addEventListener("click", (e) => {
+  if (!searching) {
+    e.preventDefault(); // first click = expand
+    searching = true;
+    navbarRight.classList.add("search-active");
+    searchInput.focus();
+    themeSwitch.innerHTML = '<i class="fi fi-br-cross"></i>';
   }
+  // if already searching, form will submit normally
+});
 
-  // Toggle theme
-  themeSwitch.addEventListener("click", () => {
-    if (body.classList.contains("lightmode")) {
-      body.classList.remove("lightmode");
-      localStorage.setItem("theme", "dark");
-      themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
-    } else {
-      body.classList.add("lightmode");
+// Exit button logic
+themeSwitch.addEventListener("click", () => {
+  if (searching) {
+    searching = false;
+    navbarRight.classList.remove("search-active");
+    themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
+    searchInput.value = "";
+  } else {
+    // normal theme toggle
+    document.body.classList.toggle("lightmode");
+    if (document.body.classList.contains("lightmode")) {
       localStorage.setItem("theme", "light");
       themeSwitch.innerHTML = '<i class="fi fi-br-sun"></i>';
+    } else {
+      localStorage.setItem("theme", "dark");
+      themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
     }
-  });
+  }
+});
+
+// On page load, apply stored theme
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("lightmode");
+    themeSwitch.innerHTML = '<i class="fi fi-br-sun"></i>';
+  } else {
+    document.body.classList.remove("lightmode");
+    themeSwitch.innerHTML = '<i class="fi fi-br-moon"></i>';
+  }
+});
 </script>
 

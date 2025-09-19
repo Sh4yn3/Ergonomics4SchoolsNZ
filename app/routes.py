@@ -8,7 +8,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir,"ergonomics.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "ergonomics.db")
 db.init_app(app)
 
 
@@ -68,11 +68,22 @@ def test():
 def topic(id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
     articles = models.Articles.query.filter_by(topic_id=id).all()
-    photo = models.Photos.query.get_or_404(id)
-    resource = models.Resources.query.filter_by(id=id).all()
 
-    return render_template("topic.html", topic=topic, articles=articles,
-                           photo=photo, resource=resource)
+    # many-to-many: get resources for this topic
+    resources = (models.Resources.query
+                 .join(models.TopicResources, models.Resources.id
+                       == models.TopicResources.c.resource_id)
+                 .filter(models.TopicResources.c.topic_id == id)
+                 .all())
+
+    # attach photos to each article
+    for article in articles:
+        article.photos = models.Photos.query.filter_by(article_id=article.id).all()
+
+    return render_template("topic.html",
+                           topic=topic,
+                           articles=articles,
+                           resources=resources)
 
 
 # loads in information about the user's chosen research letter

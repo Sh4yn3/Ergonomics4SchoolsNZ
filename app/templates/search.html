@@ -2,17 +2,19 @@
 {% block content %}
 <style>
 #searches .search-input {
-    background: #F7F7F7;
-    color: var(--color-tb);
+    flex: 1;
+    background: var(--color-tb);
     font-size: 16px;
-    padding: 5px;
-    width: 120px;
+    padding: 8px;
+    min-width: 250px;
+    max-width: 400px;
     border-radius: 12px;
+    border: 3px solid var(--color-sub);
     transition: all 0.3s ease;
 }
 
 #searches .search-input::placeholder {
-    color: var(--color-p);
+    color: var(--color-sub);
 }
 
 #searches .search-input:focus {
@@ -26,18 +28,9 @@
     flex-wrap: wrap;
 }
 
-#searches input[type="text"] {
-    padding: 8px;
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
-    border: 3px solid var(--color-sub);
-    transition: none;
-}
-
 #searches button {
     background: transparent;
-    color: #f0f0f0;
+    color: var(--color-p);
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -73,18 +66,16 @@
 }
 
 #search .thumbnail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    box-shadow: 0px 2px 10px #363c453f;
-    border: 1px solid #ccc;
-    height: 120px;
+    position: relative;
+    overflow: hidden;
     width: 120px;
+    height: 120px;
+    background: var(--color-tb);
+    box-shadow: 0px 1px 5px #363c453f;
+    border: 1px solid var(--color-tb);
 }
 
 .thumbnail img {
-    max-width: 100%;
     max-height: 100%;
     object-fit: cover;
 }
@@ -95,6 +86,7 @@
 }
 
 .result-text h3 {
+    color: var(--highlight-1);
     font-size: 18px; 
     margin: 0px;
 }
@@ -104,22 +96,14 @@
 }
 
 .result-text p {
-    color: #d6dada;
-}
-
-.light-mode .result-text p {
-    color: #404955;
+    color: var(--color-p);
 }
 
 .result-text .keywords {
     font-size: 10px;
     font-weight: bold;
-    color: #98acc0;
+    color: var(--color-sub);
     text-transform: uppercase;
-}
-
-.light-mode .result-text .keywords {
-    color: #8b97a2;
 }
 
 </style>

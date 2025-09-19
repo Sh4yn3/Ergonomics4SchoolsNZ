@@ -2,17 +2,17 @@ from app.routes import db
 
 
 TopicResources = db.Table("TopicResources",
-                          db.Column("topic_id", db.Integer,
-                                    db.ForeignKey("Topics")),
-                          db.Column("resource_id", db.Integer,
-                                    db.ForeignKey("Resources")))
+                          db.Column("topic_id", db.Integer, db.ForeignKey
+                                    ("Topics.id")),
+                          db.Column("resource_id", db.Integer, db.ForeignKey
+                                    ("Resources.id")))
 
 
 ResearchResources = db.Table("ResearchResources",
                              db.Column("research_id", db.Integer,
-                                       db.ForeignKey("Research")),
+                                       db.ForeignKey("Research.id")),
                              db.Column("resource_id", db.Integer,
-                                       db.ForeignKey("Resources")))
+                                       db.ForeignKey("Resources.id")))
 
 
 class Topics(db.Model):

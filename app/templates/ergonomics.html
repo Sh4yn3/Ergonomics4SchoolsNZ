@@ -1,6 +1,73 @@
 {% extends "layout.html" %}
 {% block content %}
+<style>
+#topic body {
+    background: url("/static/bg/Topics_Default.jpg");
+}
 
-<p> ergonomics </p>
+#topic h1 {
+    margin-top: 100px;
+    font-size: 2.25em;
+}
+
+#topic .container {
+    background: var(--base-variant-3);
+}
+</style>
+
+<section id="topic">
+    <div class="textbox">
+        <h1> Ergonomics </h1>
+        <div class="container">
+            <div class="titlecard">
+                <h2> Ergo-what? </h2>
+            </div>
+            <div class="intro">
+                <p><b> Ergo · nom · ics. </b></p>
+                <p> Someone who is qualified in ergonomics is called an ergon·o·mist. </p>
+                <p> Ergonomics is about 'fit': the fit between people, the things they do, the objects they use
+                    and the environments they work, travel and play in. If good fit is achieved, the stresses on
+                    people are reduced. They are more comfortable, they can do things more quickly and easily,
+                    and they make fewer mistakes. So when we talk about 'fit', we don't just mean physical fit,
+                    we are concerned with psychological and other aspects too. That is why ergonomics is often
+                    called 'Human Factors'.
+                </p>
+                <hr>
+                <p><b> Ergonomics and human factors - are they the same thing? </b></p>
+
+                <p> You could argue that they are, with the essential difference being that ergonomics has always
+                    been the more common term within the UK, and Human Factors is favoured by the North Americans.
+                    The two terms then would be interchangeable.  However, others would disagree and suggest that
+                    human factors is a more general term. A few years ago the terms were combined in the name of
+                    the American Society - now known as the Human Factors and Ergonomics Society.  Incidentally,
+                    the Oxford English Dictionary supports the equivalence of the terms.
+                </p>
+            </div>
+
+            <div class="segment">
+                <h3> The Role of an Ergonomist </h3>
+
+                <p> Ergonomics (or human factors) is the scientific discipline concerned with the understanding
+                    of the interactions among humans and other elements of a system. The profession applies
+                    theoretical principles, data and methods to design in order to optimise human well-being and
+                    overall system performance.
+                </p>
+                <p> Practitioners of ergonomics, ergonomists, contribute to the planning, design and evaluation of
+                    tasks, jobs, products, organisations, environments and systems in order to make them compatible
+                    with the needs, abilities, and limitations of people.
+                </p>
+                <p> Derived from the Greek ergon (work) and nomos (laws) to denote the science of work, ergonomics
+                    is a systems-oriented discipline which now applies to all aspects of human activity. Practicing
+                    ergonomists must have a broad understanding of the full scope of the discipline, taking into
+                    account the physical, cognitive, social, organisational, environmental and other relevant factors.
+                    Ergonomists often work in particular economic sectors or application domains. These application
+                    domains are not mutually exclusive and they evolve constantly. New ones are created; old ones
+                    take on new perspectives.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
