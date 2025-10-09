@@ -1,0 +1,129 @@
+/* === TOPICS === */
+
+body {
+    background: url("/static/bg/Topics_Dark_Default.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+body.lightmode {
+    background: url("/static/bg/Topics_Light_Default.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#topic .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 80px 0 0 0;
+    padding: 10px 20px;
+}
+
+#topic .date p {
+    margin: 0; 
+    color: var(--color-tb);
+    font-size: 0.85em;
+    text-align: right;
+}
+
+#topic .category {
+    display: none;
+}
+
+#topic .category.show {
+    display: block;
+}
+
+#topic h1 {
+    color: var(--color-tb);
+    font-size: 2.25em;
+}
+
+#topic .container {
+    background: var(--base-variant-3);
+    padding: 25px 25px 30px 25px;
+    border-radius: 10px;
+    min-height: 900px;
+}
+
+#topic .titlecard {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    border: 2px solid var(--accent-2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+#topic .titlecard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    filter: brightness(0.6);
+}
+
+#topic .titlecard .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--color-tb);
+    font-size: 1.6em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 5px #19010199;
+}
+
+#topic .intro {
+    margin: 10px 0px;
+}
+
+/* TOPICS: BUTTONS */
+#myBtnContainer {
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid var(--accent-2);
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+#topic .btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--color-p);
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+#topic .btn:hover {
+    color: var(--highlight-1);
+}
+
+#topic .btn.active {
+    color: var(--highlight-1);
+    font-weight: 600;
+}
+
+.btn.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--highlight-1);
+    border-radius: 1px;
+}
