@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+  <link rel="stylesheet" href="/static/topicstyle.css">
+</head>
+
+<style>
+/* === TOPICS === */
+
+#topic body {
+    background: url("/static/bg/Topics_Default.jpg");
+}
+
+#topic .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 100px 0 0 0;
+}
+
+#topic .date p {
+    margin: 0; 
+    color: var(--color-sub);
+    font-size: 0.85em;
+    text-align: right;
+}
+
+#topic .content {
+    background: var(--base-variant-1);
+    padding: 15px; 
+}
+
+</style>
+
+<section id="topic">
+    <div class="textbox">
+        <div class="header">
+            <div class="what">
+                <h1>{{ topic.name.upper() }}</h1>
+            </div>
+            <div class="date">
+                <p>Last Updated: {{ topic.last_updated_on }}</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="introduction">
+                <h2>{{ topic.heading | safe }}</h2>
+                <p>{{ topic.introduction | safe }}</p>
+            </div>
+
+            <div id="article">
+                {% for article in articles %}
+                    <h2>{{ article.title }}</h2>
+                    <h3>{{ article.subheading | safe }}</h3>
+                    <p>{{ article.content | safe }}</p>
+                {% endfor %}
+            </div>
+
+            <div id="resource">
+                {% for resources in resources %}
+                    <h2>{{ resources.name }}</h2>
+                    <img src="{{ res.image }}">
+                    <p>{{ resources.type }}</p>
+                    <p>{{ resources.description }}</p>
+                    <a href="{{ res.url }}">{{ resources.url }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

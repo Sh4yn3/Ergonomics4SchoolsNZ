@@ -23,7 +23,6 @@ class Topics(db.Model):
     image = db.Column(db.Text())
     heading = db.Column(db.Text())
     introduction = db.Column(db.Text())
-    created_on = db.Column(db.Text())
     last_updated_on = db.Column(db.Text())
     keywords = db.Column(db.Text())
     summary = db.Column(db.Text())

@@ -7,15 +7,15 @@ html {
 
 :root {
   /* Background */
-  --nav-footer: #111C25;
+  --nav-footer: #0a131a;
   --base-color: #152A3B;
   --base-variant-1: #112332;
-  --base-variant-2: #1C3243;
+  --base-variant-2: #0f1d2d;
   --base-variant-3: #09141e;
 
   /* Text */
   --color-h1: #E4E1DD;
-  --color-p: #D5D2CE;
+  --color-p: #d5d2ce;
   --color-tb: #faf8f2; /* tb = textbox */
   --color-sub: #8e8c8a;
   --highlight-1: #4ab7c8;
@@ -43,14 +43,14 @@ html {
   --color-tb: #faf8f2; 
   --color-sub: rgb(108, 114, 132);
   --highlight-1: #1d6687;
-  --highlight-2: #2a85b0;
+  --highlight-2: #609ebb;
 
   /* Accents */
   --accent-1: #25333C;
-  --accent-2: #509dc0;
+  --accent-2: #79b0c9;
   --accent-3: #BED9E6;
   --accent-4: #a9c9d6;
-  --accent-5: #92B8C9;
+  --accent-5: #b8cbd7;
 }
 
 body {
@@ -82,14 +82,11 @@ h1 {
   margin: 0px;
 }
 
-.texture {
-  background: url("")
-}
-
 .textbox {
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
+  margin-bottom: 50px;
   padding: 0 20px;
 }
 
@@ -144,7 +141,8 @@ nav {
   width: 100%;
   top: 0;
   transition: all ease 0.3s;
-  box-shadow: 1px 3px 8px #00000057;
+  border-bottom: 1px solid var(--accent-5);
+  box-shadow: 0px 1px 10px #000000ba;
 }
 
 nav .content {
@@ -322,7 +320,8 @@ nav.hidden {
 #error img {
     display: block;
     margin: auto;
-    width: 40%;
+    height: 40%;
+    max-height: 300px;
 }
 
 #error .button {

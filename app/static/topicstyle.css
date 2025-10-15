@@ -16,16 +16,23 @@ body.lightmode {
     background-size: cover;
 }
 
+hr.thin {
+    margin: 15px 0px;
+    height: 0.3px;
+    background-color: var(--color-sub); 
+    border: none;
+}
+
 #topic .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin: 80px 0 0 0;
+    align-items: baseline;
+    margin: 80px 0px 0px 0px;
     padding: 10px 20px;
 }
 
 #topic .date p {
-    margin: 0; 
+    margin: 0;
     color: var(--color-tb);
     font-size: 0.85em;
     text-align: right;
@@ -44,12 +51,84 @@ body.lightmode {
     font-size: 2.25em;
 }
 
+#topic .h3-title {
+    margin: 0px 0px 15px 0px;
+    border-bottom: 2px solid var(--accent-2);
+}
+
+#topic h3 {
+    font-size: 1.3em; 
+    margin: 8px 0px;
+}
+
+#topic h4 {
+    margin: 0px 0px 5px 0px;
+    font-size: 1.05em;
+    color: var(--highlight-1);
+}
+
+#topic b {
+    font-size: 1.1em;
+    color: var(--color-h1);
+}
+
+.textbox {
+    line-height: 20px;
+}
+
 #topic .container {
     background: var(--base-variant-3);
     padding: 25px 25px 30px 25px;
     border-radius: 10px;
     min-height: 900px;
+    margin-bottom: 50px;
 }
+
+/* TOPICS: BUTTONS */
+#myBtnContainer {
+    text-align: center;
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid var(--accent-2);
+    margin-bottom: 35px;
+}
+
+#topic .btn {
+    text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--color-p);
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+#topic .btn:hover {
+    color: var(--highlight-1);
+}
+
+#topic .btn.active {
+    color: var(--highlight-1);
+    font-weight: bold;
+}
+
+.btn.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--highlight-1);
+    border-radius: 1px;
+}
+
+
+/* TOPICS CATEGORY: ABOUT */
 
 #topic .titlecard {
     position: relative;
@@ -76,54 +155,39 @@ body.lightmode {
     transform: translate(-50%, -50%);
     text-align: center;
     color: var(--color-tb);
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: bold;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 5px #19010199;
 }
 
 #topic .intro {
-    margin: 10px 0px;
+    margin-top: 25px;
+    border: 2px solid var(--accent-2);
+    border-radius: 4px;
+    padding: 20px 30px;
+    text-align: center;
 }
 
-/* TOPICS: BUTTONS */
-#myBtnContainer {
+#topic .intro p {
+    margin-top: 8px;
+}
+
+/* TOPICS CATEGORY: FAQ | RESOURCES OPENER */
+
+#topic .opener {
     display: flex;
-    gap: 30px;
-    border-bottom: 2px solid var(--accent-2);
-    margin-bottom: 20px;
-    padding-left: 10px;
+    align-items: top;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-#topic .btn {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: var(--color-p);
-    font-size: 1em;
-    font-weight: 400;
-    padding: 10px 5px;
-    position: relative;
-    transition: color 0.3s ease;
+#topic .opener-text {
+    flex: 1;
+    min-width: 300px;
 }
 
-#topic .btn:hover {
-    color: var(--highlight-1);
-}
-
-#topic .btn.active {
-    color: var(--highlight-1);
-    font-weight: 600;
-}
-
-.btn.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--highlight-1);
-    border-radius: 1px;
+#topic .opener-image img {
+    max-width: 150px;
 }

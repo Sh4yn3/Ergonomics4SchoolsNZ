@@ -4,71 +4,123 @@
   <link rel="stylesheet" href="/static/topicstyle.css">
 </head>
 
-<style>
-/* === TOPICS === */
-
-#topic body {
-    background: url("/static/bg/Topics_Default.jpg");
-}
-
-#topic .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: 100px 0 0 0;
-}
-
-#topic .date p {
-    margin: 0; 
-    color: var(--color-sub);
-    font-size: 0.85em;
-    text-align: right;
-}
-
-#topic .content {
-    background: var(--base-variant-1);
-    padding: 15px; 
-}
-
-</style>
-
-<section id="topic">
-    <div class="textbox">
-        <div class="header">
-            <div class="what">
-                <h1>{{ topic.name.upper() }}</h1>
-            </div>
-            <div class="date">
-                <p>Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }}</p>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="introduction">
-                <h2>{{ topic.heading | safe }}</h2>
-                <p>{{ topic.introduction | safe }}</p>
-            </div>
-
-            <div id="article">
-                {% for article in articles %}
-                    <h2>{{ article.title }}</h2>
-                    <h3>{{ article.subheading | safe }}</h3>
-                    <p>{{ article.content | safe }}</p>
-                {% endfor %}
-            </div>
-
-            <div id="resource">
-                {% for resources in resources %}
-                    <h2>{{ resources.name }}</h2>
-                    <img src="{{ res.image }}">
-                    <p>{{ resources.type }}</p>
-                    <p>{{ resources.description }}</p>
-                    <a href="{{ res.url }}">{{ resources.url }}</a>
-                {% endfor %}
-            </div>
-        </div>
+<section id="topic" class="textbox">
+  <div class="header">
+    <div class="what">
+      <h1> {{ topic.name.upper() }} </h1>
     </div>
+    <div class="date">
+      <p> Published: {{ topic.created_on }} | Updated: {{ topic.last_updated_on }} </p>
+    </div>
+
+  </div>
+  <div class="container">
+    <div id="myBtnContainer">
+      <button class="btn" data-category="about" onclick="filterSelection('about')"> About </button>
+      <button class="btn" data-category="faq" onclick="filterSelection('faq')"> FaQs </button>
+      <button class="btn" data-category="resources" onclick="filterSelection('resources')"> Resources </button>
+    </div>
+    
+    <!-- CATEGORY: ABOUT ERGONOMICS -->
+    <div class="category about">
+        <div class="titlecard">
+          <img src="/static/image/ergonomics_1_wall.jpg" alt="wall" oncontextmenu="return false;" draggable="false">
+          <div class="title"><h2> {{ topic.heading | safe }} </h2></div>
+        </div>
+    </div> <!-- END OF ABOUT -->
+
+    <!-- CATEGORY: FREQUENTLY ASKED QUESTIONS -->
+    <div class="category faq">
+        <div class="">
+          
+        </div>
+    </div> <!-- END OF FAQs -->
+        
+
+    <!-- CATEGORY: RESOURCES FOR ERGONOMICS -->
+    <div class="category resources">
+        <p> resources </p>
+    </div> <!-- END OF RESOURCES -->
+</div> <!-- END OF CONTAINER -->
 </section>
 
+<!-- Based on W3Schools.com -->
+<script>
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("category");
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+
+  // Store active category in localStorage
+  localStorage.setItem("activeCategory", c);
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.querySelector(".btn.active");
+    if (current) {
+      current.classList.remove("active");
+    }
+    this.classList.add("active");
+  });
+}
+
+// On page load, set the last active category
+document.addEventListener("DOMContentLoaded", function () {
+  var active = localStorage.getItem("activeCategory") || "about";
+  filterSelection(active);
+
+  // Set the active button visually
+  var btns = document.querySelectorAll("#myBtnContainer .btn");
+  btns.forEach(function (btn) {
+    if (btn.getAttribute("data-category") === active) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+});
+</script>
+
+<script>
+  // On page load, apply stored theme
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("lightmode");
+    } else {
+      document.body.classList.remove("lightmode");
+    }
+  });
+</script>
 
 {% endblock %}

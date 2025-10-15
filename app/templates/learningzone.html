@@ -81,6 +81,18 @@
   display: flex;
 }
 
+#learningzone #toggle-all .label:after {
+    width: 100px;
+    content: "";
+    height: 43px;
+    background: var(--accent-2);
+    position: absolute;
+    top: 314px;
+    border-radius: 25px 50px 0 0;
+    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0 100%);
+}
+
+
 #learningzone #toggle-all .arrow {
   border-radius: 8px 0px 0px 0px;
   background: var(--accent-2);
@@ -115,7 +127,8 @@
 }
 
 #learningzone #toggle-all:hover .arrow,
-#learningzone #toggle-all:hover .label {
+#learningzone #toggle-all:hover .label,
+#learningzone #toggle-all:hover .label:after {
   background: var(--highlight-2);
 }
 
@@ -209,8 +222,8 @@
 
 </style>
 
+<div class="textbox">
 <section id="learningzone">
-  <div class="textbox">
     <div class="intro">
       <div class="welcome">
         <h1>Welcome to The Learning Zone</h1>
@@ -233,10 +246,9 @@
         <span class="label"> Expand All </span>
       </button>
     </div>
-  </div>
 </section>
 
-<section id="lz-topics" class="textbox">
+<section id="lz-topics">
   <div class="lz-header">
     <h1> List of Topics </h1>
   </div>
@@ -258,7 +270,7 @@
   
 </section>
 
-<section id="lz-research" class="textbox">
+<section id="lz-research">
   <div class="lz-header">
     <h1> Research Reports </h1>
   </div>
@@ -279,6 +291,7 @@
   </div>
 
 </section>
+</div>
 
 <!-- Collapse / Expand Toggles -->
 <!-- Based on W3Schools -->
@@ -309,7 +322,8 @@
         body.classList.remove("active");
       }
     });
-
+  
+  // Changes the arrows beside the labels if (in)active
     arrows.forEach(arrow => {
       arrow.textContent = allExpanded ? " v " : " > ";
     });

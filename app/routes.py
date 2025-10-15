@@ -57,33 +57,37 @@ def ergonomics():
     return render_template("ergonomics.html")
 
 
-# DELETE LATER
-@app.route("/test")
-def test():
-    return render_template("test.html")
-
-
 # loads in information of the user's chosen topic
 @app.route("/learning-zone/topic/<int:id>")
 def topic(id):
     topic = models.Topics.query.filter_by(id=id).first_or_404()
+
+    # If the heading is empty or None, show WIP page
+    if not topic.heading or topic.heading.strip() == "":
+        return render_template("wip.html", topic=topic)
+
+    # Get related articles
     articles = models.Articles.query.filter_by(topic_id=id).all()
 
-    # many-to-many: get resources for this topic
-    resources = (models.Resources.query
-                 .join(models.TopicResources, models.Resources.id
-                       == models.TopicResources.c.resource_id)
-                 .filter(models.TopicResources.c.topic_id == id)
-                 .all())
+    # Many-to-many: get resources for this topic
+    resources = (
+        models.Resources.query
+        .join(models.TopicResources, models.Resources.id == models.TopicResources.c.resource_id)
+        .filter(models.TopicResources.c.topic_id == id)
+        .all()
+    )
 
-    # attach photos to each article
+    # Attach photos to each article
     for article in articles:
         article.photos = models.Photos.query.filter_by(article_id=article.id).all()
 
-    return render_template("topic.html",
-                           topic=topic,
-                           articles=articles,
-                           resources=resources)
+    # Normal topic page
+    return render_template(
+        "topic.html",
+        topic=topic,
+        articles=articles,
+        resources=resources
+    )
 
 
 # loads in information about the user's chosen research letter
