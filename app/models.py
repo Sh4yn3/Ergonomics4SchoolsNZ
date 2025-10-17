@@ -53,6 +53,16 @@ class Articles(db.Model):
     topic_for = db.Column(db.Text())
 
 
+class FaQ(db.Model):
+    __tablename__ = "FaQ"
+    id = db.Column(db.Integer, primary_key=True)
+    topic_id = db.Column(db.Integer, db.ForeignKey("Topics.id"))
+    question = db.Column(db.Text())
+    answer = db.Column(db.Text())
+    faq_for = db.Column(db.Text())
+    last_updated = db.Column(db.Text())
+
+
 class Resources(db.Model):
     __tablename__ = "Resources"
     id = db.Column(db.Integer, primary_key=True)

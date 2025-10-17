@@ -1,229 +1,312 @@
 {% extends "layout.html" %}
 {% block content %}
 <style>
-/* === CONTACT ==== */
-
-section#contact-info {
-    margin-top: 85px;
-    margin-bottom: 15px;
-}
-
-.hide {
-    display: none;
-}
-
-#contact .textbox {
+/*=== CONTACTS === */
+#contact .container {
+    margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 20px;
-}
-
-/* CONTACT: ALTINFO */
-
-#altinfo {
-    flex: 1;
-    padding: 20px;
-    background: var(--base-variant-1);
-    border-radius: 8px;
-}
-
-
-/* CONTACT: ASKHERE */
-#askhere {
-    background: var(--base-variant-1);
-    padding: 40px 20px;
-    text-align: center;
-    color: var(--color-h1);
-    flex: 2;
-    display: flex;
-    justify-content: center;
-}
-
-#askhere h1 {
-    font-size: 2em;
-    margin: 0;
-}
-
-#askhere {
-    background: var(--base-color);
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-#askhere .box {
-    background: var(--base-variant-1);
-    padding: 30px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px #00000030;
-    max-width: 600px;
-    width: 100%;
-}
-
-#askhere form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-#askhere label {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    color: var(--color-h1);
-    font-size: 0.95em;
-    gap: 6px;
-}
-
-#askhere input, textarea {
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--accent-1);
-    font-size: 1em;
-    outline: none;
-    transition: 0.2s ease;
-    background: var(--base-color);
     color: var(--color-p);
 }
 
-#askhere input:focus, textarea:focus {
-    border-color: var(--highlight-1);
-    box-shadow: 0 0 6px var(--highlight-1);
+/* CONTACTS: SPECIFICS | LEFT SECTION */
+#contact .specifics {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 350px;
+    min-width: 280px;
 }
 
-#askhere textarea {
+#contact .specifics-box {
+    background-color: var(--base-variant-3);
+    padding: 20px;
+    border-left: 4px solid var(--accent-2);
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+#contact .specifics-text h3 {
+    font-size: 1.1em;
+    color: var(--color-h1);
+    margin-bottom: 10px;
+}
+
+#contact .specifics-text hr {
+    border: none;
+    border-top: 1px solid var(--base-variant-3);
+    margin: 10px 0;
+}
+
+#contact .specifics-text p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #d6dce5;
+}
+
+#contact .specifics-text a {
+    color: #5ec4f1;
+    text-decoration: none;
+}
+
+#contact .specifics-text a:hover {
+    text-decoration: underline;
+}
+
+#contact .subtitle {
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* CONTACTS: FORMS | RIGHT SECTION */
+#contact #askhere {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--base-variant-3);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00000040;
+}
+
+/* Form Wrapper */
+#contact .box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels & Inputs */
+#contact form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95em;
+    margin-bottom: 6px;
+}
+
+#contact form input[type="text"],
+#contact form input[type="email"],s
+#contact form input[type="number"],
+#contact form textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #1c2a3e;
+    color: var(--color-p);
+    border: 1px solid var(--accent-2);
+    border-radius: 3px;
+    font-size: 0.95em;
     resize: vertical;
+}
+
+#contact form textarea {
     min-height: 120px;
 }
 
-#askhere .radio {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 6px;
+#contact form input:focus,
+#contact form textarea:focus {
+    outline: none;
+    border-color: var(--accent-2);
+    background-color: var(--base-variant-2);
 }
 
-#askhere .radio label {
+/* Required Indicator */
+#contact .required {
+    color: var(--highlight-2);
+    margin-left: 4px;
+}
+
+#contact .note {
+    font-size: 0.8em;
+    color: var(--highlight-1);
+    margin-top: 5px;
+}
+
+#contact .radio {
+    display: flex;
+    gap: 30px;
+    margin: 10px 0 5px;
+}
+
+#contact .radio label {
     font-weight: normal;
+}
+
+#contact #studentInfo label:nth-of-type(2) {
     display: flex;
     align-items: center;
-    gap: 6px;
-    cursor: pointer;
+    gap: 10px;
 }
 
-#askhere .note {
-    font-size: 0.85em;
+#contact input.age {
+    width: 80px;
+}
+
+#contact button[type="submit"],
+#contact button[type="button"],
+#contact .clear-form {
+    background-color: transparent;
+    border: 2px solid var(--color-p);
     color: var(--color-p);
-    margin-top: 4px;
-}
-
-#askhere .required {
-    color: var(--highlight-1);
-    font-weight: bold;
-}
-
-#askhere button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: var(--accent-1);
-    color: var(--base-color);
-    font-size: 1em;
-    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-size: 0.95em;
+    border-radius: 3px;
     cursor: pointer;
     transition: 0.3s ease;
-    margin-top: 10px;
 }
 
-#askhere button:hover {
-    background: var(--highlight-1);
-    transform: scale(1.02);
+#contact button[type="submit"]:hover,
+#contact .clear-form:hover {
+    background-color: var(--accent-5);
+    border-color: var(--accent-2);
+    color: var(--highlight-1);
+}
+
+
+/* CONTACT: Conditional Fields */
+#contact .hide {
+    display: none;
+}
+
+/* CONTACT: Responsive */
+@media (max-width: 768px) {
+    #contact .container {
+        flex-direction: column;
+    }
+
+    #contact .specifics, #askhere {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #contact input.age {
+        width: 100%;
+    }
+
+    #contact #studentInfo label:nth-of-type(2) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 </style>
-
-<div class="textbox">
-
-<section id="contact-info">
-        <h1> Ask Us! </h1>
-        <p> Doing a school project? We're here to help! First of all, please read about the topic related to your project in
-            the Ergonomics 4 Schools Learning Zone. Then check the FAQ list to see if the answer that you're looking for is
-            already there. If you still need help or information, simply ask us by filling in the form below. Please make sure
-            that the information that you give us is clear and correct, ESPECIALLY YOUR EMAIL ADDRESS, otherwise we can't reply to you! </p>
-
-        <p> Make sure your question is clear too, so that we can give you the answer you need. We can't guarantee to do your project for you,
-            but we'll do our best to help. We will reply to you by email within a few days. </p>
-</section>
+<div class="textbox"> 
 
 <section id="contact">
-    <div id="altinfo">
-        <div class="info">
-            <h2> Why do you need all these details? </h2>
-            The information that you give us will be used to check that we are reaching our
-            intended audience of school students and teachers studying ergonomics. It will
-            also help us to give you an answer in the right form and depth. We will not make
-            the information available to anyone outside the IEHF.
-        </div>
-        <div class="info">
-            <h2> What if I'm not a Student / Teacher? </h2>
-            <p> If you are not a school teacher or student, you should go to the main IEHF site and see if the information you need is there </p>
-            <a href="https://ergonomics.org.uk/"> (Link to Site) </a>
-            <p> If not, you can contact the IEHF using the details below. </p>
+    <div class="main-border">
+        <div class="main-title">
+            <h1> Ask Us! </h1>
         </div>
     </div>
-    <div id="askhere">
-    <div class="box">
-        {% if submitted %}
-        <p> Thank you, your message has been received! </p>
-        {% endif %}
 
-    <form action="/add" method="POST">
-        <label> Name
-            <input type="text" name="name">
-        </label>
-        
-        <label> Email Address
-            <span class="required">*</span>
-            <input type="email" maxlength="256" name="email" required>
-            <div class="note"> *we cannot respond back without email address or an incorrect one, please check it carefully! </div>
-        </label>
-
-        <label> Are you a teacher or student? </label>
-        <div class="radio">
-            <label> <input type="radio" name="role" value="student" onclick="updateVisibility()"> Student </label>
-            <label> <input type="radio" name="role" value="teacher" onclick="updateVisibility()"> Teacher </label>
-        </div>
-
-        <div id="teacherInfo" class="hide">
-            <label> Which school do you teach?
-                <input type="text" name="school">
-            </label>
-        </div>
-
-        <div id="studentInfo" class="hide">
-            <label> Which school do you attend?
-                <input type="text" name="school">
-            </label>
-            <label>How old are you?
-                <input type="number" class="age" name="age" min="1" max="125">
-            </label>
-            <label> What subjects are you studying?
-                <input type="text" name="subjects">
-            </label>
-        </div>
-
-        <label> Question
-            <textarea name="question" rows="10"></textarea>
-            <div class="note">
-                (please make your question as specific as possible, we can't answer a broad question that starts with "tell me all you know about [blank]")
+    <div class="container">
+        <div class="specifics">
+            <div class="specifics-box">
+                <div class="specifics-text">
+                    <h3> Doing a school project? We're here to help! </h3>
+                    <hr>
+                    <p>
+                        First, please read about the topic related to your project in
+                        the Learning Zone and check their respective FAQs list to see
+                        if the answer you're looking for is already there.
+                    </p>
+                    <br>
+                    <p>
+                        If you still need help or information, simply ask us by filling
+                        the form! Please make sure that the given information is clear
+                        and correct, especially your email address. 
+                    </p>
+                </div> <!-- end of box1 -->
             </div>
-        </label>
+            <div class="specifics-box">
+                <div class="specifics-text">
+                    <h3> What if I'm not a Student / Teacher? </h3>
+                    <hr>
+                    <p>
+                        If you are not a school teacher or student, go to the main CIEHF website.
+                    </p>
+                    <p class="subtitle">
+                        <a href="https://www.ergonomics.org.uk" target="_blank" class="highlight"> (Link to site) </a>
+                    </p>
+                    <br>
+                    <p>
+                        If not, you can contact the CIEHF using the details below:
+                    </p>
+                    <a href="#"> (Insert Details) </a>
+                    <br>
+                </div> <!-- end of box2 -->
+            </div>
+            <div class="specifics-box">
+                <div class="specifics-text">
+                    <p>
+                        For any issues or suggestions for the website, contact the
+                        <a href="#" class="highlight"> web editor </a> instead.
+                    </p>
+                </div>
+            </div> <!-- end of box3 -->
+        </div>    
+        <div id="askhere">
+            <div class="box">
+                {% if submitted %}
+                <p> Thank you, your message has been received! </p>
+                {% endif %}
 
-        <button type="submit"> Submit</button>
-        </div>
+            <form action="/add" method="POST">
+                <label> Name
+                    <input type="text" name="name">
+                </label>
+                
+                <label> Email Address
+                    <span class="required">*</span>
+                    <input type="email" maxlength="256" name="email" required>
+                    <div class="note"> *we cannot respond back without email address or an incorrect one, please check it carefully! </div>
+                </label>
+
+                <label> Are you a teacher or student? </label>
+                <div class="radio">
+                    <label> <input type="radio" name="role" value="student" onclick="updateVisibility()"> Student </label>
+                    <label> <input type="radio" name="role" value="teacher" onclick="updateVisibility()"> Teacher </label>
+                </div>
+
+                <div id="teacherInfo" class="hide">
+                    <label> Which school do you teach?
+                        <input type="text" name="school">
+                    </label>
+                </div>
+
+                <div id="studentInfo" class="hide">
+                    <div class="school-age">
+                        <label> Which school do you attend?
+                            <input type="text" name="school">
+                        </label>
+                        <label> How old are you?
+                            <input type="number" class="age" name="age" min="1" max="125">
+                        </label>
+                        <label> What subjects are you studying?
+                            <input type="text" name="subjects">
+                        </label>
+                    </div>
+                </div>
+
+                <label> Question
+                    <textarea name="question" rows="10"></textarea>
+                    <div class="note">
+                        (please make your question as specific as possible, we can't answer a broad question that starts with "tell me all you know about [blank]")
+                    </div>
+                </label>
+
+                <button type="submit"> Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
 
 </section>
+
 </div>
 
 <script>

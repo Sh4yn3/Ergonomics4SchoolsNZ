@@ -4,7 +4,9 @@
   <link rel="stylesheet" href="/static/topicstyle.css">
 </head>
 
-<section id="topic" class="textbox">
+<div class="textbox">
+
+<section id="topic">
   <div class="header">
     <div class="what">
       <h1> {{ topic.name.upper() }} </h1>
@@ -23,10 +25,24 @@
     
     <!-- CATEGORY: ABOUT ERGONOMICS -->
     <div class="category about">
-        <div class="titlecard">
-          <img src="/static/image/ergonomics_1_wall.jpg" alt="wall" oncontextmenu="return false;" draggable="false">
-          <div class="title"><h2> {{ topic.heading | safe }} </h2></div>
-        </div>
+      <div class="titlecard">
+        <img src="/static/image/ergonomics_1_wall.jpg" alt="wall" oncontextmenu="return false;" draggable="false">
+        <div class="title"><h2> {{ topic.heading | safe }} </h2></div>
+      </div>
+      <div class="intro">
+        {{ topic.introduction | safe }}
+      </div>
+
+      <div class="segment"> <!-- Article Segments -->
+        {% for article in articles %}
+          <br>
+          <div class="h3-title">
+            <h3> {{ article.title }} </h3>
+          </div>
+          <h4> {{ article.subheading | safe }} </h4>
+          <p> {{ article.content | safe }} </p>
+        {% endfor %}
+      </div>
     </div> <!-- END OF ABOUT -->
 
     <!-- CATEGORY: FREQUENTLY ASKED QUESTIONS -->
@@ -43,6 +59,8 @@
     </div> <!-- END OF RESOURCES -->
 </div> <!-- END OF CONTAINER -->
 </section>
+
+</div>
 
 <!-- Based on W3Schools.com -->
 <script>
